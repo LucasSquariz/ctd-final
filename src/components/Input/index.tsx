@@ -36,7 +36,7 @@ export function Input({
     <Controller
       control={control}
       name={name}
-      render={({ field: { onChange, onBlur, value, ref }, fieldState: { error, isDirty, isTouched } }) => (
+      render={({ field: { onChange, onBlur}, fieldState: { error, isDirty, isTouched } }) => (
         <S.Container>
           {label && <S.Label htmlFor={name}>{label}</S.Label>}
 
@@ -53,9 +53,9 @@ export function Input({
               id={name}
               hasError={!!error}
               disabled={disabled}
-              onChange={onChange} 
-              onBlur={onBlur}             
-              {...rest}                            
+              onBlur={onBlur} // notify when input is touched
+              onChange={onChange} // send value to hook form              
+              {...rest}              
             />
 
             {Icon && (

@@ -9,9 +9,14 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\""
   },
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@hookform/resolvers": "^2.9.11",
+    "@mui/icons-material": "^5.11.9",
+    "@mui/material": "^5.11.10",
+    "@mui/styled-engine-sc": "^5.11.9",
     "@types/styled-components": "^5.1.26",
-    "axios": "^1.3.3",
+    "axios": "^1.3.4",
     "next": "^13.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

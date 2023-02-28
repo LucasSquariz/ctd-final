@@ -17,8 +17,6 @@ import Image from 'next/image';
 import imgHome from '../assets/imgHome.png';
 import { ImgHome } from 'styles/ImgHome';
 import Logo from '../assets/Logo.png';
-import Link from '@mui/material/Link';
-import { border, borderRadius, margin, padding } from '@mui/system';
 
 interface Props {
   /**
@@ -77,32 +75,20 @@ export default function DrawerAppBar(props: Props) {
           </IconButton>
           <Image src={Logo} alt="logo"></Image>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-            <Link
-              sx={{
-                border: '1px solid #C1FD35',
-                padding: '10px',
-                borderRadius: '5px',
-                margin: 2,
-                textDecoration: 'none',
-                color: '#C1FD35'
-              }}
-              href="/login"
-            >
-              Entra
-            </Link>
-            <Link
-              sx={{
-                padding: '10px',
-                borderRadius: '5px',
-                backgroundColor: '#C1FD35',
-                margin: 2,
-                color: '#000',
-                textDecoration: 'none'
-              }}
-              href="/cadastro/cadastro"
-            >
-              Criar Conta
-            </Link>
+            {navItems.map(item => (
+              <Button
+                key={item}
+                sx={{
+                  color: '#201F22',
+                  backgroundColor: '#C1FD35',
+                  fontWeight: 'bold',
+                  borderRadius: '5px',
+                  margin: '4px'
+                }}
+              >
+                {item}
+              </Button>
+            ))}
           </Box>
         </Toolbar>
       </AppBar>

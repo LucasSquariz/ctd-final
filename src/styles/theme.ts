@@ -4,7 +4,7 @@ export default {
     gutter: '3.2rem'
   },
   border: {
-    radius: '0.625rem'
+    radius: '0.625rem',
   },
   font: {
     family:
@@ -13,6 +13,7 @@ export default {
     normal: 400,
     bold: 600,
     sizes: {
+      xxsmall: '1rem',
       xsmall: '1.2rem',
       small: '1.4rem',
       medium: '1.6rem',
@@ -32,6 +33,7 @@ export default {
     ceriseRed: '#E72176',
     gallery: '#EAEAEA',
     gray: '#808080',
+    lightGray: '#A6A5A7', 
     green: '#C1FD35',
     color1: '#201F22',
     color2: '#3A393E',

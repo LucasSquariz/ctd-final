@@ -17,7 +17,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html,  body {
-    height: 100%;
+    height: 100vh;
     font-family: 'Open Sans', sans-serif;
     font-size: 14px;
    

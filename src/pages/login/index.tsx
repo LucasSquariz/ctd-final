@@ -83,7 +83,6 @@ const Login: NextPage = () => {
             control={control}
           />
         )}
-
         {/* @ts-ignore */}
         <Button variant="primary" type={logged ? "submit" : ""} onClick={!logged ? onContinue : handleLogin}>
           Continuar
