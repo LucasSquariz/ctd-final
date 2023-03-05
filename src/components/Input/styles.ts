@@ -8,9 +8,6 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  & > span {
-    color: blue;
-  }
 `;
 export const ContainerInput = styled.div<StyledContainerProps>`
   display: flex;
@@ -113,10 +110,10 @@ export const HidePasswordButtonContainer = styled.div`
 
 export const Error = styled.span`
   color: ${({ theme }) => theme.colors.danger};
-  display: block;
-  font-size: ${({ theme }) => theme.font.sizes.small};
-  font-weight: 900;
-  width: 100%;
-  text-align: start;
-  margin: 0.3125rem 0;
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 140.62%;
+  margin-top: 20px;
 `;

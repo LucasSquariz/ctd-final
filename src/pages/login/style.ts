@@ -3,10 +3,6 @@ import styled, { css } from 'styled-components';
 export const ContainerPage = styled.div`
   height: 100vh;
   display: flex;
-
-  ${({ theme }) => css`
-    background-color: ${theme.colors.black};
-  `};
 `;
 
 export const Title = styled.h1`

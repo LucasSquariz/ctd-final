@@ -9,6 +9,7 @@ import { SubmitHandler } from 'react-hook-form';
 import { Button } from 'components/Button';
 import { Form } from 'styles/form';
 import { useRouter } from 'next/router';
+import LayoutGuest from 'components/LayoutGuest';
 const Cadastro: NextPage = (): any => {
   const schema = Yup.object().shape({
     nome: Yup.string().required(),
@@ -76,7 +77,7 @@ const Cadastro: NextPage = (): any => {
   };
 
   return (
-    <>
+    <LayoutGuest>
       <div
         style={{
           display: 'flex',
@@ -145,7 +146,7 @@ const Cadastro: NextPage = (): any => {
           <Button type="submit">Criar Conta</Button>
         </Form>
       </div>
-    </>
+    </LayoutGuest>
   );
 };
 

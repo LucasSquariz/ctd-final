@@ -3,6 +3,7 @@ import {
   GlobalStyleComponent,
   css
 } from 'styled-components';
+import 'react-toastify/dist/ReactToastify.css';
 
 import reset from './reset';
 

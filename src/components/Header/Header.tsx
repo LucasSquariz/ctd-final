@@ -17,6 +17,11 @@ import Button from '@mui/material/Button';
 import Image from 'next/image';
 
 import Logo from '../../assets/Logo1.png';
+import LogoAuth from '../../assets/Logo.png';
+import { Container } from './styles';
+import { useAuthState } from 'contexts/auth/AuthContext';
+import { useGetUserById } from 'hooks/useGerUserById';
+import { capitalizeFirstLetter } from 'utils/capitalizeFirstLetter';
 
 interface Props {
   /**
@@ -24,13 +29,22 @@ interface Props {
    * You won't need it on your project.
    */
   window?: () => Window;
+  auth?: boolean;
 }
 
 const drawerWidth = 240;
 const navItems = ['Entrar', 'Criar conta '];
+const authItems = [
+  'Inicio',
+  'Seu Perfil',
+  'Carregar valor',
+  'Pagar serviços',
+  'Cartões',
+  'Encerrar sessão'
+];
 
 export default function Header(props: Props) {
-  const { window } = props;
+  const { window, auth } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -38,17 +52,33 @@ export default function Header(props: Props) {
   };
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box
+      onClick={handleDrawerToggle}
+      sx={{
+        textAlign: 'center',
+        backgroundColor: '#C1FD35',
+        height: '100%',
+        paddingTop: '12px'
+      }}
+    >
       <Image src={Logo} alt="logo"></Image>
       <Divider />
       <List>
-        {navItems.map(item => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {auth
+          ? authItems.map(item => (
+              <ListItem key={item} disablePadding>
+                <ListItemButton>
+                  <ListItemText primary={item} />
+                </ListItemButton>
+              </ListItem>
+            ))
+          : navItems.map(item => (
+              <ListItem key={item} disablePadding>
+                <ListItemButton sx={{ textAlign: 'center' }}>
+                  <ListItemText primary={item} />
+                </ListItemButton>
+              </ListItem>
+            ))}
       </List>
     </Box>
   );
@@ -56,11 +86,18 @@ export default function Header(props: Props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
+  const { user } = useAuthState();
+
+  const { data } = useGetUserById(user.user_id);
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-      <AppBar sx={{ backgroundColor: '#C1FD35' }} component="nav">
-        <Toolbar>
+      <AppBar
+        sx={{ backgroundColor: auth ? '#201F22' : '#C1FD35' }}
+        component="nav"
+      >
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -70,10 +107,47 @@ export default function Header(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Image src={Logo} alt="logo"></Image>
+          <Image src={auth ? LogoAuth : Logo} alt="logo"></Image>
+          {auth && (
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <Box
+                sx={{
+                  display: 'flex',
+                  width: '43px',
+                  height: '40px',
+                  borderRadius: '12px',
+                  backgroundColor: '#C1FD35',
+                  textAlign: 'center',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#201F22',
+                  fontWeight: 'bold',
+                  fontSize: '20px'
+                }}
+              >
+                {capitalizeFirstLetter(data?.firstname ?? '')}
+                {capitalizeFirstLetter(data?.lastname ?? '')}
+              </Box>
+              <Container>
+                <Typography
+                  variant="h3"
+                  sx={{
+                    color: '#fff',
+                    fontSize: '1rem',
+                    width: '30%',
+                    fontFamily: 'Open Sans',
+                    whiteSpace: 'nowrap',
+                    fontWeight: '700'
+                  }}
+                >
+                  Olá, {data?.firstname} {data?.lastname}
+                </Typography>
+              </Container>
+            </Box>
+          )}
         </Toolbar>
       </AppBar>
-      <Box component="nav">
+      <Box component="nav" sx={{ backgroundColor: '#C1FD35' }}>
         <Drawer
           container={container}
           variant="temporary"
