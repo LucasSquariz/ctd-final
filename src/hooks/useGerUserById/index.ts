@@ -12,9 +12,8 @@ const getUserById = async (id: number) => {
     const { data } = await api.get<UserPayload>(`/users/${id}`);
 
     return data as UserPayload;
-  } catch (err) {
-    console.log(err);
-    return Promise.reject(err);
+  } catch (err:any) {
+    console.error(err);
   }
 };
 

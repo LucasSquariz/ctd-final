@@ -1,8 +1,8 @@
 import { Dispatch, SetStateAction } from 'react';
 
 export type AuthUserInput = {
-  email: string;
-  password: string;
+  email?: string;
+  password?: string;
 };
 
 export type ModelUser = {

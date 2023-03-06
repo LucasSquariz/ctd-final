@@ -9,11 +9,10 @@ export async function signIn({ email, password }: AuthUserInput) {
       email,
       password
     });
-
+    console.log(data);
     return data;
-  } catch (err) {
+  } catch (err:any) {
     console.log(err);
-    return Promise.reject(err);
   }
 }
 

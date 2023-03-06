@@ -18,6 +18,8 @@ import { AuthDispatchProvider, AuthStateProvider } from './AuthContext';
 import { AuthUserInput, ModelUser } from './types';
 import { api } from 'api/client';
 import { useSignIn } from 'hooks/useSignIn';
+import { success } from 'helpers/notify/success';
+import { error } from 'helpers/notify/error';
 
 let authChannel: BroadcastChannel;
 
@@ -51,13 +53,13 @@ export function AuthProvider({ children }: PropsWithChildren<unknown>) {
         { email, password },
         {
           onSuccess: data => {
+            console.log(data);
             const { token } = data;
-
+            success('Logado com sucesso!');
             setCookie(undefined, STORAGE.TOKEN_KEY, token, {
               maxAge: 60 * 60 * 24 * 30,
               path: '/'
-            });
-
+            });            
             async function getAccount() {
               const { data } = await api.get<ModelUser>('/account');
               if (data) {
@@ -71,6 +73,10 @@ export function AuthProvider({ children }: PropsWithChildren<unknown>) {
             getAccount();
 
             router.push('/inicio');
+          },
+          onError: () => {             
+            error('Credenciais inválidas!');
+            router.reload();
           }
         }
       );

@@ -9,6 +9,9 @@ export const NavBar = styled.div`
     background-color: ${theme.colors.green};
     color: ${theme.colors.black};
   `};
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
 
 export const NavBarContainer = styled.div`

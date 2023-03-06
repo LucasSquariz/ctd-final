@@ -26,8 +26,7 @@ export default function Footer() {
           justifyContent: 'flex-start',
           alignItems: 'center',
           padding: 4
-        }}
-        showLabels
+        }}        
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);

@@ -22,6 +22,7 @@ import { Container } from './styles';
 import { useAuthState } from 'contexts/auth/AuthContext';
 import { useGetUserById } from 'hooks/useGerUserById';
 import { capitalizeFirstLetter } from 'utils/capitalizeFirstLetter';
+import Link from 'next/link';
 
 interface Props {
   /**
@@ -66,19 +67,19 @@ export default function Header(props: Props) {
       <List>
         {auth
           ? authItems.map(item => (
-              <ListItem key={item} disablePadding>
-                <ListItemButton>
-                  <ListItemText primary={item} />
-                </ListItemButton>
-              </ListItem>
-            ))
+            <ListItem key={item} disablePadding>
+              <ListItemButton>
+                <ListItemText primary={item} />
+              </ListItemButton>
+            </ListItem>
+          ))
           : navItems.map(item => (
-              <ListItem key={item} disablePadding>
-                <ListItemButton sx={{ textAlign: 'center' }}>
-                  <ListItemText primary={item} />
-                </ListItemButton>
-              </ListItem>
-            ))}
+            <ListItem key={item} disablePadding>
+              <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemText primary={item} />
+              </ListItemButton>
+            </ListItem>
+          ))}
       </List>
     </Box>
   );
@@ -107,7 +108,9 @@ export default function Header(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Image src={auth ? LogoAuth : Logo} alt="logo"></Image>
+          <Link href={"/"}>
+            <Image src={auth ? LogoAuth : Logo} alt="logo"></Image>
+          </Link>
           {auth && (
             <Box sx={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <Box
