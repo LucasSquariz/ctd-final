@@ -33,15 +33,48 @@ interface Props {
   auth?: boolean;
 }
 
+type ItensTypes = {
+  label: string;
+  link: string;
+}[];
+
 const drawerWidth = 240;
-const navItems = ['Entrar', 'Criar conta '];
-const authItems = [
-  'Inicio',
-  'Seu Perfil',
-  'Carregar valor',
-  'Pagar serviços',
-  'Cartões',
-  'Encerrar sessão'
+const navItems: ItensTypes = [
+  {
+    label: 'Entrar',
+    link: '/login'
+  },
+  {
+    label: 'Criar conta',
+    link: '/cadastro/cadastro'
+  }
+];
+
+const authItems: ItensTypes = [
+  {
+    label: 'Inicio',
+    link: '/inicio'
+  },
+  {
+    label: 'Seu Perfil',
+    link: '/perfil'
+  },
+  {
+    label: 'Carregar valor',
+    link: '/inicio'
+  },
+  {
+    label: 'Pagar serviços',
+    link: '/inicio'
+  },
+  {
+    label: 'Cartões',
+    link: '/cartao'
+  },
+  {
+    label: 'Encerrar sessão',
+    link: '/'
+  }
 ];
 
 export default function Header(props: Props) {
@@ -67,19 +100,23 @@ export default function Header(props: Props) {
       <List>
         {auth
           ? authItems.map(item => (
-            <ListItem key={item} disablePadding>
-              <ListItemButton>
-                <ListItemText primary={item} />
-              </ListItemButton>
-            </ListItem>
-          ))
+              <ListItem key={item.label} disablePadding>
+                <Link href={item.link}>
+                  <ListItemButton>
+                    <ListItemText primary={item.label} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))
           : navItems.map(item => (
-            <ListItem key={item} disablePadding>
-              <ListItemButton sx={{ textAlign: 'center' }}>
-                <ListItemText primary={item} />
-              </ListItemButton>
-            </ListItem>
-          ))}
+              <ListItem key={item.label} disablePadding>
+                <Link href={item.link}>
+                  <ListItemButton sx={{ textAlign: 'center' }}>
+                    <ListItemText primary={item.label} />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            ))}
       </List>
     </Box>
   );
@@ -108,7 +145,7 @@ export default function Header(props: Props) {
           >
             <MenuIcon />
           </IconButton>
-          <Link href={"/"}>
+          <Link href={'/'}>
             <Image src={auth ? LogoAuth : Logo} alt="logo"></Image>
           </Link>
           {auth && (

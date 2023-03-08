@@ -1,12 +1,50 @@
 import styled, { css } from 'styled-components';
 
 export const ContainerPage = styled.div`
-  height: 100%;
+  height: 100vh;
   display: grid;
   grid-template-columns: 2.5fr 10fr;
   justify-content: space-between;
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
+  `};
+`;
+
+export const NavBar = styled.div`
+  max-width: 30vw;
+  flex-wrap: nowrap;
+  ${({ theme }) => css`
+    background-color: ${theme.colors.green};
+    color: ${theme.colors.black};
+  `};
+`;
+
+export const NavBarContainer = styled.div`
+  margin-top: 100px;
+  margin-left: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+`;
+
+export const LinksNavBar = styled.h1`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.xsmall};
+    font-weight: ${theme.font.light};
+  `};
+`;
+
+export const SelectedLinksNavBar = styled.h1`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.xsmall};
+  `};
+`;
+
+export const EndSessionLinkNavBar = styled.h1`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.xsmall};
+    color: ${theme.colors.gray};
   `};
 `;
 
@@ -39,6 +77,7 @@ export const ContentMoneyContainer = styled.div`
 
 export const MoneyContainer = styled.div`
   display: flex;
+  width: 90%;
   flex-direction: column;
   justify-content: flex-end;
   margin: 0 0 3rem 3rem;
@@ -203,4 +242,19 @@ export const MoreActivitiesTitle = styled.h1`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xsmall};
   `}
+`;
+
+export const MoreAddCartao = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 50%;
+`;
+
+export const MoreAddCartaoLink = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #c1fd35;
 `;

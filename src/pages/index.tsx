@@ -19,6 +19,7 @@ import { ImgHome } from 'styles/ImgHome';
 import Logo from '../assets/Logo.png';
 import Link from '@mui/material/Link';
 import { border, borderRadius, margin, padding } from '@mui/system';
+import BottomNavigation from '@mui/material/BottomNavigation';
 
 interface Props {
   /**
@@ -34,6 +35,7 @@ const navItems = ['Entrar', 'Criar conta'];
 export default function DrawerAppBar(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [value, setValue] = React.useState(0);
 
   const handleDrawerToggle = () => {
     setMobileOpen(prevState => !prevState);
@@ -268,6 +270,32 @@ export default function DrawerAppBar(props: Props) {
             ></Box>
           </Box>
         </Box>
+      </Box>
+      <Box
+        sx={{
+          width: '100vw',
+          position: 'fixed',
+          bottom: 0,
+          backgroundColor: '#3A393E'
+        }}
+      >
+        <BottomNavigation
+          sx={{
+            backgroundColor: '#3A393E',
+            display: 'flex',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            padding: 4
+          }}
+          value={value}
+          onChange={(event, newValue) => {
+            setValue(newValue);
+          }}
+        >
+          <Typography variant="h6" sx={{ color: '#C1FD35', marginLeft: 3 }}>
+            © 2022 Digital Money House
+          </Typography>
+        </BottomNavigation>
       </Box>
     </Box>
   );

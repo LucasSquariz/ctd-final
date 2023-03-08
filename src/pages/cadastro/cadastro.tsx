@@ -84,7 +84,8 @@ const Cadastro: NextPage = (): any => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          marginTop: '250px'
+          marginTop: '8rem',
+          paddingBottom: '5rem'
         }}
       >
         <Form onSubmit={handleSubmit(handleSignUp)}>

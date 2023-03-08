@@ -21,7 +21,11 @@ const Sidebar = () => {
         </Link>
         <s.LinksNavBar>Carregar valor</s.LinksNavBar>
         <s.LinksNavBar>Pagar serviços</s.LinksNavBar>
-        <s.LinksNavBar>Cartões</s.LinksNavBar>
+        <Link href="/cartao" prefetch>
+          <s.LinksNavBar activePath={pathname === '/cartao'}>
+            Cartões
+          </s.LinksNavBar>
+        </Link>
         <s.EndSessionLinkNavBar onClick={signOut}>
           Encerrar sessão
         </s.EndSessionLinkNavBar>

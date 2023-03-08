@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { StyledActivePath } from './types';
 
 export const NavBar = styled.div`
-  height: 100vh;
+  height: 100%;
   max-width: 276px;
   flex-wrap: nowrap;
   ${({ theme }) => css`

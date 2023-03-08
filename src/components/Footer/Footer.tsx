@@ -13,7 +13,7 @@ export default function Footer() {
   return (
     <Box
       sx={{
-        width: '100vw',
+        width: '100%',
         position: 'fixed',
         bottom: 0,
         backgroundColor: '#3A393E'
@@ -26,7 +26,7 @@ export default function Footer() {
           justifyContent: 'flex-start',
           alignItems: 'center',
           padding: 4
-        }}        
+        }}
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);

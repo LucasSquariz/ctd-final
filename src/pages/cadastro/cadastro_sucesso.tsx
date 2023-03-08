@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 import IconSuccess from '../../../public/icon_success';
 
-const CadastroSucesso: NextPage = () => {
+const CadastroSucesso: NextPage = () => {  
   return (
     <>
       <div
