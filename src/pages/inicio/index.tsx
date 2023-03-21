@@ -1,11 +1,29 @@
+import Link from 'next/link';
+import { SubmitHandler, useForm } from 'react-hook-form';
+
 import * as s from './style';
-import GreenCircleImg from '../../assets/greenCircleImg';
 import SearchImg from '../../assets/searchImg';
-import RightArrowImg from '../../assets/rightArrowImg';
 import LayoutAuth from 'components/LayoutAuth';
 import Sidebar from 'components/Sidebar';
+import { useGetAccount } from 'hooks/useGetAccount';
+import useGetAccountActivityById from 'hooks/useAccountActivityById';
+import ActivityCards from 'components/ActivityCards';
+import { Input } from 'components/Input';
 
 const Inicio = () => {
+  const { data } = useGetAccount();  
+
+  /* @ts-ignore */
+  const activity = useGetAccountActivityById(data?.id);
+  const activityData = activity?.data;
+  console.log(activityData);
+
+  const { control } = useForm({
+    defaultValues: {
+      search: ''
+    }
+  });
+
   return (
     <LayoutAuth>
       <s.ContainerPage>
@@ -15,11 +33,17 @@ const Inicio = () => {
             <s.ContentMoneyContainer>
               <s.MoneyContainer>
                 <s.MoneyTextContainer>Dinheiro disponível</s.MoneyTextContainer>
-                <s.MoneyValueContainer>$ 6.890.534,17</s.MoneyValueContainer>
+                <s.MoneyValueContainer>
+                  R$ {data?.available_amount}
+                </s.MoneyValueContainer>
               </s.MoneyContainer>
               <s.CardOptionsContainer>
-                <s.CardOptionsText>Ver cartões</s.CardOptionsText>
-                <s.CardOptionsText>Ver CVC</s.CardOptionsText>
+                <Link href={'/cartao'}>
+                  <s.CardOptionsText>Ver cartões</s.CardOptionsText>
+                </Link>
+                <Link href={'/perfil'}>
+                  <s.CardOptionsText>Ver CVU</s.CardOptionsText>
+                </Link>
               </s.CardOptionsContainer>
             </s.ContentMoneyContainer>
             <s.ButtonsContainer>
@@ -27,65 +51,18 @@ const Inicio = () => {
               <s.Button>Pagar serviços</s.Button>
             </s.ButtonsContainer>
             <s.SearchBarLabel>
-              <SearchImg />
-              <s.SearchBarInput placeholder="Pesquisar em sua atividade" />
+              <Input
+                icon={() => <SearchImg />}
+                type="text"
+                id="search"
+                name="search"
+                placeholder="Buscar em sua atividade"
+                control={control}
+              />
             </s.SearchBarLabel>
             <s.ActivityContainer>
-              <s.ActivityTitle>Sua atividade</s.ActivityTitle>
-              <s.ActivityCards>
-                <s.ActivityCardsDescriptionAndImg>
-                  <GreenCircleImg />
-                  <s.ActivityCardsDescription>
-                    Você transferiu para Rodrigo
-                  </s.ActivityCardsDescription>
-                </s.ActivityCardsDescriptionAndImg>
-                <s.ActivityCardsCashAndDate>
-                  <s.ActivityCardsCash>-$ 1265,57</s.ActivityCardsCash>
-                  <s.ActivityCardsDate>Sábado</s.ActivityCardsDate>
-                </s.ActivityCardsCashAndDate>
-              </s.ActivityCards>
-              <s.ActivityCards>
-                <s.ActivityCardsDescriptionAndImg>
-                  <GreenCircleImg />
-                  <s.ActivityCardsDescription>
-                    Você transferiu para Consórcio
-                  </s.ActivityCardsDescription>
-                </s.ActivityCardsDescriptionAndImg>
-                <s.ActivityCardsCashAndDate>
-                  <s.ActivityCardsCash>-$ 1265,57</s.ActivityCardsCash>
-                  <s.ActivityCardsDate>Sábado</s.ActivityCardsDate>
-                </s.ActivityCardsCashAndDate>
-              </s.ActivityCards>
-              <s.ActivityCards>
-                <s.ActivityCardsDescriptionAndImg>
-                  <GreenCircleImg />
-                  <s.ActivityCardsDescription>
-                    Você adicionou valor
-                  </s.ActivityCardsDescription>
-                </s.ActivityCardsDescriptionAndImg>
-                <s.ActivityCardsCashAndDate>
-                  <s.ActivityCardsCash>+$ 1265,57</s.ActivityCardsCash>
-                  <s.ActivityCardsDate>Sábado</s.ActivityCardsDate>
-                </s.ActivityCardsCashAndDate>
-              </s.ActivityCards>
-              <s.ActivityCards>
-                <s.ActivityCardsDescriptionAndImg>
-                  <GreenCircleImg />
-                  <s.ActivityCardsDescription>
-                    Você recebeu uma transferência
-                  </s.ActivityCardsDescription>
-                </s.ActivityCardsDescriptionAndImg>
-                <s.ActivityCardsCashAndDate>
-                  <s.ActivityCardsCash>+$ 1265,57</s.ActivityCardsCash>
-                  <s.ActivityCardsDate>Sábado</s.ActivityCardsDate>
-                </s.ActivityCardsCashAndDate>
-              </s.ActivityCards>
-              <s.MoreActivities>
-                <s.MoreActivitiesTitle>
-                  Ver toda sua atividade
-                </s.MoreActivitiesTitle>
-                <RightArrowImg />
-              </s.MoreActivities>
+              <s.ActivityTitle>Suas atividades</s.ActivityTitle>
+              <ActivityCards activityData={activityData} />              
             </s.ActivityContainer>
           </s.ContentContainer>
         </s.Content>

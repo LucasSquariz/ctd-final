@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const ContainerPage = styled.div`
-  height: 100%;
+  height: 100%;  
   display: grid;
   grid-template-columns: 2.5fr 10fr;
   justify-content: space-between;
@@ -11,6 +11,7 @@ export const ContainerPage = styled.div`
 `;
 
 export const Content = styled.div`
+
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
     color: ${theme.colors.black};
@@ -25,74 +26,31 @@ export const ContentContainer = styled.div`
   `};
 `;
 
-export const ContentMoneyContainer = styled.div`
-  height: 230px;
-  display: flex;
-  justify-content: space-between;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  ${({ theme }) => css`
-    background-color: ${theme.colors.color1};
-    color: ${theme.colors.white};
-    border-radius: ${theme.border.radius};
-  `};
-`;
-
-export const MoneyContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin: 0 0 3rem 3rem;
-`;
-
-export const MoneyTextContainer = styled.h1`
-  display: flex;
-  align-items: flex-end;
-  padding-bottom: 1rem;
-  ${({ theme }) => css`
-    font-size: ${theme.font.sizes.xxsmall};
-    font-weight: ${theme.font.bold};
-  `}
-`;
-export const MoneyValueContainer = styled.h1`
-  display: flex;
-  align-items: flex-end;
-  padding: 1.5vh;
-  border-radius: 100px;
-  ${({ theme }) => css`
-    border: 1px solid ${theme.colors.green};
-    font-size: ${theme.font.sizes.xlarge};
-    font-weight: ${theme.font.bold};
-  `}
-`;
-
-export const CardOptionsContainer = styled.div`
-  display: flex;
-  margin: 2rem 4rem 0 0;
-  justify-items: space-between;
-`;
-
-export const CardOptionsText = styled.h1`
-  color: white;
-  ${({ theme }) => css`    
-    margin-left: 1rem;
-    font-size: ${theme.font.sizes.xxsmall};
-    font-weight: ${theme.font.light};
-  `}
-`;
-
-export const ButtonsContainer = styled.div`
+export const SearchContainer = styled.div`
   display: flex;
   justify-content: space-between;
   margin-top: 2rem;
-  row-gap: 200px;
 `;
 
-export const Button = styled.button`
-  width: 48%;
-  height: 5rem;
+export const SearchBarLabel = styled.label`
+  display: flex;
+  width: 65rem;
   align-items: center;
   justify-content: center;
-  border: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  ${({ theme }) => css`
+    background-color: ${theme.colors.white};
+    border-radius: ${theme.border.radius};
+  `}
+`;
+
+export const FilterContainer = styled.div`
+  width: 12rem;
+  height: 5rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 1rem;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   ${({ theme }) => css`
@@ -104,14 +62,14 @@ export const Button = styled.button`
   `}
 `;
 
-export const SearchBarLabel = styled.label`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2rem;  
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+export const FilterButton = styled.button`
+  border: none;
+  cursor: pointer;
   ${({ theme }) => css`
-    background-color: ${theme.colors.white};
+    font-size: ${theme.font.sizes.xsmall};
+    font-weight: ${theme.font.light};
+    font-weight: ${theme.font.bold};
+    background-color: ${theme.colors.green};
     border-radius: ${theme.border.radius};
   `}
 `;
@@ -153,6 +111,8 @@ export const MoreActivities = styled.div`
 `;
 
 export const MoreActivitiesTitle = styled.h1`
+  display: flex;
+  justify-content: center;
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xsmall};
   `}

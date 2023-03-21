@@ -56,6 +56,10 @@ const authItems: ItensTypes = [
     link: '/inicio'
   },
   {
+    label: 'Atividade',
+    link: '/atividade'
+  },
+  {
     label: 'Seu Perfil',
     link: '/perfil'
   },

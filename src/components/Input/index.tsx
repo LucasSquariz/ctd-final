@@ -13,7 +13,7 @@ export function Input({
   typePassword,
   type,
   control,
-  disabled,
+  disabled,  
   icon: Icon,
   ...rest
 }: InputProps) {
@@ -36,7 +36,10 @@ export function Input({
     <Controller
       control={control}
       name={name}
-      render={({ field: { onChange, onBlur}, fieldState: { error, isDirty, isTouched } }) => (
+      render={({
+        field: { onChange, onBlur },
+        fieldState: { error, isDirty, isTouched }
+      }) => (
         <S.Container>
           {label && <S.Label htmlFor={name}>{label}</S.Label>}
 
@@ -54,8 +57,8 @@ export function Input({
               hasError={!!error}
               disabled={disabled}
               onBlur={onBlur} // notify when input is touched
-              onChange={onChange} // send value to hook form              
-              {...rest}              
+              onChange={onChange} // send value to hook form
+              {...rest}
             />
 
             {Icon && (

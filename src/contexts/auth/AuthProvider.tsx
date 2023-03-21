@@ -59,7 +59,7 @@ export function AuthProvider({ children }: PropsWithChildren<unknown>) {
             setCookie(undefined, STORAGE.TOKEN_KEY, token, {
               maxAge: 60 * 60 * 24 * 30,
               path: '/'
-            });            
+            });
             async function getAccount() {
               const { data } = await api.get<ModelUser>('/account');
               if (data) {
@@ -74,7 +74,7 @@ export function AuthProvider({ children }: PropsWithChildren<unknown>) {
 
             router.push('/inicio');
           },
-          onError: () => {             
+          onError: () => {
             error('Credenciais inválidas!');
             router.reload();
           }

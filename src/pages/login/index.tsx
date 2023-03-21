@@ -40,12 +40,12 @@ const Login: NextPage = () => {
     const onContinue = () => {
         setHaveValidEmail(true);
     };
-    /* @ts-ignore */
+        
     const handleLogin: SubmitHandler<Data> = async data => {        
         signIn({
             email: data.email,
             password: data.password
-        })
+        })        
     };
 
     return (

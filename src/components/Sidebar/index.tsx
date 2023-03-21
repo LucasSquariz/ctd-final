@@ -9,19 +9,24 @@ const Sidebar = () => {
   return (
     <s.NavBar>
       <s.NavBarContainer>
-        <Link href="/inicio" prefetch>
+        <Link href="/inicio">
           <s.LinksNavBar activePath={pathname === '/inicio'}>
             Inicio
           </s.LinksNavBar>
         </Link>
-        <Link href="/perfil" prefetch>
+        <Link href="/atividade">
+          <s.LinksNavBar activePath={pathname === '/atividade'}>
+            Atividade
+          </s.LinksNavBar>
+        </Link>
+        <Link href="/perfil">
           <s.LinksNavBar activePath={pathname === '/perfil'}>
             Seu Perfil
           </s.LinksNavBar>
         </Link>
         <s.LinksNavBar>Carregar valor</s.LinksNavBar>
         <s.LinksNavBar>Pagar serviços</s.LinksNavBar>
-        <Link href="/cartao" prefetch>
+        <Link href="/cartao">
           <s.LinksNavBar activePath={pathname === '/cartao'}>
             Cartões
           </s.LinksNavBar>
