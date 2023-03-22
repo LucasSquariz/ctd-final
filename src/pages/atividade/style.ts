@@ -1,17 +1,17 @@
 import styled, { css } from 'styled-components';
 
 export const ContainerPage = styled.div`
-  height: 100%;  
+  height: 100vh;    
   display: grid;
-  grid-template-columns: 2.5fr 10fr;
-  justify-content: space-between;
+  grid-template-columns: 4fr 8fr;
+  
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
   `};
 `;
 
 export const Content = styled.div`
-
+  height: 100%; 
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
     color: ${theme.colors.black};
@@ -19,7 +19,7 @@ export const Content = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  margin: 104px 79px;
+  margin: 10em 5em;
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
     color: ${theme.colors.black};

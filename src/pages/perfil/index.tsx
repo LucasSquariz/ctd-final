@@ -4,17 +4,29 @@ import { MdContentCopy } from 'react-icons/md';
 
 import LayoutAuth from 'components/LayoutAuth';
 import Sidebar from 'components/Sidebar';
-import * as s from './styles';
 import { useAuthState } from 'contexts/auth/AuthContext';
-import { useGetUserById } from 'hooks/useGerUserById';
-import { useEffect, useRef, useState } from 'react';
+import { QUERY_KEY_USER_BY_ID, useGetUserById } from 'hooks/useGerUserById';
+import { useRef, useState } from 'react';
 import { success } from 'helpers/notify/success';
+import { useUpdateUser } from 'hooks/useUpdateUser';
+import { UpdateUser } from './types';
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { schema } from './schema';
+import { Input } from 'components/Input';
+import { GetServerSideProps } from 'next';
+import { withSSRAuth } from 'helpers/auth/withSSRAuth';
+import * as s from './styles';
+import { Button } from 'components/Button';
+import { useQueryClient } from 'react-query';
+
+export const getServerSideProps: GetServerSideProps = withSSRAuth(async () => ({
+  props: {}
+}));
 
 const Perfil = () => {
   const { user } = useAuthState();
-
   const { data } = useGetUserById(user.user_id);
-
   const cvuRef = useRef<HTMLHeadingElement>(null);
   const handleClick = () => {
     if (cvuRef.current) {
@@ -41,6 +53,35 @@ const Perfil = () => {
     }
   };
 
+  const { handleSubmit, control } = useForm({
+    resolver: yupResolver(schema)
+  });
+
+  const { mutate: updateUser } = useUpdateUser(String(user.user_id));
+  const [editName, setEditName] = useState(false);
+  const [editPhone, setEditPhone] = useState(false);
+  const [editPassword, setEditPassword] = useState(false);
+  const queryClient = useQueryClient();
+  const onSubmit: SubmitHandler<FieldValues> = (data: UpdateUser) => {
+    updateUser(
+      {
+        ...data
+      },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries(QUERY_KEY_USER_BY_ID);
+
+          success('Alteração realizada com sucesso!');
+          setEditName(false);
+          setEditPhone(false);
+          setEditPassword(false);
+        }
+      }
+    );
+  };
+
+  console.log(data);
+
   return (
     <LayoutAuth>
       <s.ContainerPage>
@@ -55,17 +96,51 @@ const Perfil = () => {
               <s.Data>{data?.email}</s.Data>
             </s.DivRow>
             <s.Line />
-            <s.DivSpaceBetween>
-              <s.DivRow>
-                <s.UserData>Nome e sobrenome</s.UserData>
-                <s.Data>
-                  {data?.firstname}
-                  &nbsp;
-                  {data?.lastname}
-                </s.Data>
-              </s.DivRow>
-              <EditIcon color="disabled" />
-            </s.DivSpaceBetween>
+            {editName ? (
+              <form
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                  margin: '10px 0'
+                }}
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                <Input
+                  type="text"
+                  name="firstname"
+                  id="firstname"
+                  placeholder="Nome"
+                  control={control}
+                />
+                <Input
+                  type="text"
+                  name="lastname"
+                  id="lastname"
+                  placeholder="Sobrenome"
+                  control={control}
+                />
+                <Button type="submit" style={{ width: '100%' }}>
+                  Salvar
+                </Button>
+              </form>
+            ) : (
+              <s.DivSpaceBetween>
+                <s.DivRow>
+                  <s.UserData>Nome e sobrenome</s.UserData>
+                  <s.Data>
+                    {data?.firstname}
+                    &nbsp;
+                    {data?.lastname}
+                  </s.Data>
+                </s.DivRow>
+                <EditIcon
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setEditName(true)}
+                  color="disabled"
+                />
+              </s.DivSpaceBetween>
+            )}
 
             <s.Line />
             <s.DivSpaceBetween>
@@ -73,24 +148,86 @@ const Perfil = () => {
                 <s.UserData>CPF</s.UserData>
                 <s.Data>{data?.dni}</s.Data>
               </s.DivRow>
-              <EditIcon color="disabled" />
             </s.DivSpaceBetween>
             <s.Line />
-            <s.DivSpaceBetween>
-              <s.DivRow>
-                <s.UserData>Telefone</s.UserData>
-                <s.Data>{data?.phone}</s.Data>
-              </s.DivRow>
-              <EditIcon color="disabled" />
-            </s.DivSpaceBetween>
+            {editPhone ? (
+              <form
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                  margin: '10px 0'
+                }}
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                <Input
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  placeholder="Digite um novo número"
+                  control={control}
+                />
+
+                <Button type="submit" style={{ width: '100%' }}>
+                  Salvar
+                </Button>
+              </form>
+            ) : (
+              <s.DivSpaceBetween>
+                <s.DivRow>
+                  <s.UserData>Telefone</s.UserData>
+                  <s.Data>{data?.phone}</s.Data>
+                </s.DivRow>
+                <EditIcon
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setEditPhone(true)}
+                  color="disabled"
+                />
+              </s.DivSpaceBetween>
+            )}
             <s.Line />
-            <s.DivSpaceBetween>
-              <s.DivRow>
-                <s.UserData>Senha de acesso</s.UserData>
-                <s.Data>******</s.Data>
-              </s.DivRow>
-              <EditIcon color="disabled" />
-            </s.DivSpaceBetween>
+            {editPassword ? (
+              <form
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '12px',
+                  margin: '10px 0'
+                }}
+                onSubmit={handleSubmit(onSubmit)}
+              >
+                <Input
+                  type="text"
+                  name="password"
+                  id="password"
+                  placeholder="Digite uma nova senha"
+                  control={control}
+                />
+                <Input
+                  type="text"
+                  name="confirm_password"
+                  id="confirm_password"
+                  placeholder="Confirme sua nova senha"
+                  control={control}
+                />
+
+                <Button type="submit" style={{ width: '100%' }}>
+                  Salvar
+                </Button>
+              </form>
+            ) : (
+              <s.DivSpaceBetween>
+                <s.DivRow>
+                  <s.UserData>Senha de acesso</s.UserData>
+                  <s.Data>******</s.Data>
+                </s.DivRow>
+                <EditIcon
+                  style={{ cursor: 'pointer' }}
+                  onClick={() => setEditPassword(true)}
+                  color="disabled"
+                />
+              </s.DivSpaceBetween>
+            )}
             <s.Line />
           </s.ContentProfile>
           <s.DivAdmPayment>

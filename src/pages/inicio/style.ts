@@ -96,8 +96,7 @@ export const Button = styled.button`
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.xsmall};
-    font-weight: ${theme.font.light};
+    font-size: ${theme.font.sizes.xsmall};    
     font-weight: ${theme.font.bold};
     background-color: ${theme.colors.green};
     border-radius: ${theme.border.radius};

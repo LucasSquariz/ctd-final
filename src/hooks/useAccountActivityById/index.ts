@@ -6,7 +6,7 @@ export const QUERY_KEY_ACTIVITY_BY_USER_ID = 'QUERY_KEY_ACTIVITY_BY_USER_ID';
 
 const getAccountActivityById = async (id: number) => {
   try {
-    const { data } = await api.get<ActivityTypes>(`/accounts/${id}/activity`);    
+    const { data } = await api.get<ActivityTypes>(`/accounts/${id}/activity`);
     return data as ActivityTypes;
   } catch (err: any) {
     console.error(err);

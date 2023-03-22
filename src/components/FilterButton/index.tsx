@@ -3,15 +3,10 @@ import { styled, alpha } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import Menu, { MenuProps } from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import EditIcon from '@mui/icons-material/Edit';
 import Divider from '@mui/material/Divider';
-import ArchiveIcon from '@mui/icons-material/Archive';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FilterIcon from 'assets/filterIcon';
-import {
-  FormControl,
+import {  
   FormControlLabel,
   FormLabel,
   Radio,
@@ -62,7 +57,7 @@ const StyledMenu = styled((props: MenuProps) => (
   }
 }));
 
-export default function CustomizedMenus() {
+export default function CustomizedMenus({FilterByDate}:any) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -71,7 +66,8 @@ export default function CustomizedMenus() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  
+  
   return (
     <div>
       <Button
@@ -129,7 +125,7 @@ export default function CustomizedMenus() {
           <FormLabel id="demo-radio-buttons-group-label">
             Período <KeyboardArrowDownIcon />
           </FormLabel>
-          <Typography>limpar filtros</Typography>
+          <Typography onClick={() => FilterByDate('reset')}>limpar filtros</Typography>
         </div>
         <Divider sx={{ my: 0.5 }} />
         <RadioGroup
@@ -143,6 +139,7 @@ export default function CustomizedMenus() {
               control={<Radio />}
               label="Hoje"
               labelPlacement="start"
+              onClick={() => FilterByDate('hoje')}
             />
           </MenuItem>
           <MenuItem>
@@ -151,6 +148,7 @@ export default function CustomizedMenus() {
               control={<Radio />}
               label="Ontem"
               labelPlacement="start"
+              onClick={() => FilterByDate('ontem')}
             />
           </MenuItem>
           <MenuItem>
@@ -159,6 +157,7 @@ export default function CustomizedMenus() {
               control={<Radio />}
               label="Última semana"
               labelPlacement="start"
+              onClick={() => FilterByDate('semana')}
             />
           </MenuItem>
           <MenuItem>
@@ -167,6 +166,7 @@ export default function CustomizedMenus() {
               control={<Radio />}
               label="Últimos 15 dias"
               labelPlacement="start"
+              onClick={() => FilterByDate('15 dias')}
             />
           </MenuItem>
           <MenuItem>
@@ -175,6 +175,7 @@ export default function CustomizedMenus() {
               control={<Radio />}
               label="Últimos mês"
               labelPlacement="start"
+              onClick={() => FilterByDate('mes')}
             />
           </MenuItem>
           <MenuItem>
@@ -183,6 +184,7 @@ export default function CustomizedMenus() {
               control={<Radio />}
               label="Último ano"
               labelPlacement="start"
+              onClick={() => FilterByDate('ano')}
             />
           </MenuItem>
         </RadioGroup>

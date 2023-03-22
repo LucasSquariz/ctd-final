@@ -81,11 +81,13 @@ const Cadastro: NextPage = (): any => {
       <div
         style={{
           display: 'flex',
+          width: '100%',
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          marginTop: '8rem',
-          paddingBottom: '5rem'
+          paddingBottom: '5rem',
+          backgroundColor: '#272727',
+          height: '100vh'
         }}
       >
         <Form onSubmit={handleSubmit(handleSignUp)}>
