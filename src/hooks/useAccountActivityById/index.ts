@@ -13,10 +13,15 @@ const getAccountActivityById = async (id: number) => {
   }
 };
 
-function useGetAccountActivityById(id: number) {
-  return useQuery(QUERY_KEY_ACTIVITY_BY_USER_ID, () =>
-    getAccountActivityById(id)
-  );
+function useGetAccountActivityById(
+  id: number,
+  onSuccess: (activity: ActivityTypes) => void
+) {
+  return useQuery({
+    queryKey: QUERY_KEY_ACTIVITY_BY_USER_ID,
+    queryFn: () => getAccountActivityById(id),
+    onSuccess: onSuccess
+  });
 }
 
 export default useGetAccountActivityById;

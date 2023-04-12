@@ -12,6 +12,12 @@ import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import CustomizedMenus from 'components/FilterButton';
 
+export async function getServerSideProps(context: any) {
+  return {
+    props: {} // will be passed to the page component as props
+  };
+}
+
 const ActivityCards = ({ activityData }: any) => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
@@ -48,7 +54,7 @@ const ActivityCards = ({ activityData }: any) => {
   };
 
   const filterActivity = (search: string): ActivityItemType[] => {
-    if (search === ''){
+    if (search === '') {
       setData(activityData);
       return data;
     }
@@ -132,11 +138,15 @@ const ActivityCards = ({ activityData }: any) => {
             paginationActivity(data, page)?.map((item: ActivityItemType) => (
               <s.ActivityCards key={item.id}>
                 <s.ActivityCardsDescriptionAndImg>
-                  {item.type === 'Deposit' ? (
-                    <GreenCircleImg />
-                  ) : (
-                    <RedCircleImg />
-                  )}
+                  <Link
+                    href={`/detalheAtividade/${item.account_id}/${item.id}`}
+                  >
+                    {item.type === 'Deposit' ? (
+                      <GreenCircleImg />
+                    ) : (
+                      <RedCircleImg />
+                    )}
+                  </Link>
                   <s.ActivityCardsDescription>
                     {item.description}
                   </s.ActivityCardsDescription>

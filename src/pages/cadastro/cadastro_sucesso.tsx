@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 import IconSuccess from '../../../public/icon_success';
 
-const CadastroSucesso: NextPage = () => {  
+const CadastroSucesso: NextPage = () => {
   return (
     <>
       <div
@@ -29,7 +29,7 @@ const CadastroSucesso: NextPage = () => {
           <h1 style={{ color: '#fff', fontSize: '3rem', fontWeight: 'bolder' }}>
             Cadastro realizado
           </h1>
-          <IconSuccess />
+          <IconSuccess color="#c1fd35" />
           <p style={{ color: '#fff ', fontSize: '1.5rem' }}>
             Enviamos uma mensagem de confirmação para seu e-mail, por favor
             acesse e siga as instruções para iniciar a sessão.

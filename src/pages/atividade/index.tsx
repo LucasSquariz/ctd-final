@@ -5,12 +5,13 @@ import LayoutAuth from 'components/LayoutAuth';
 import Sidebar from 'components/Sidebar';
 import { useGetAccount } from 'hooks/useGetAccount';
 import useGetAccountActivityById from 'hooks/useAccountActivityById';
+import { useAuthState } from 'contexts/auth/AuthContext';
 
-const Atividade = () => {
-  const { data } = useGetAccount();
-
+const Atividade = () => {  
+  const { user } = useAuthState();  
+console.log(user)
   /* @ts-ignore */
-  const activity = useGetAccountActivityById(data?.user_id);
+  const activity = useGetAccountActivityById(user.user_id);
   const activityData = activity?.data;
 
   return (

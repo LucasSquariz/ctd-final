@@ -14,7 +14,7 @@ const Cadastro: NextPage = (): any => {
   const schema = Yup.object().shape({
     nome: Yup.string().required(),
     sobrenome: Yup.string().required(),
-    cpf: Yup.string().required(),
+    dni: Yup.number().required(),
     email: Yup.string().required(),
     password: Yup.string()
       .required()
@@ -41,9 +41,9 @@ const Cadastro: NextPage = (): any => {
   const router = useRouter();
   const { control, handleSubmit, formState } = useForm<SignUp>({
     defaultValues: {
-      nome: '',
-      sobrenome: '',
-      cpf: '',
+      firstname: '',
+      lastname: '',
+      dni: 0,
       email: '',
       password: '',
       confirmaPassword: '',
@@ -108,9 +108,9 @@ const Cadastro: NextPage = (): any => {
           />
 
           <Input
-            type="text"
-            name="cpf"
-            id="cpf"
+            type="number"
+            name="dni"
+            id="dni"
             placeholder="CPF"
             control={control}
           />

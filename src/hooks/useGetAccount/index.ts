@@ -11,6 +11,10 @@ export async function getAccount() {
   return data as ModelUser;
 }
 
-export function useGetAccount() {
-  return useQuery(QUERY_ACCOUNT_KEY, getAccount);
+export function useGetAccount(onSuccess: (activity: any) => void) {
+  return useQuery({
+    queryKey: QUERY_ACCOUNT_KEY,
+    queryFn: () => getAccount(),
+    onSuccess: onSuccess    
+  });
 }

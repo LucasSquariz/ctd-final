@@ -19,6 +19,7 @@ import { withSSRAuth } from 'helpers/auth/withSSRAuth';
 import * as s from './styles';
 import { Button } from 'components/Button';
 import { useQueryClient } from 'react-query';
+import Link from 'next/link';
 
 export const getServerSideProps: GetServerSideProps = withSSRAuth(async () => ({
   props: {}
@@ -230,12 +231,15 @@ const Perfil = () => {
             )}
             <s.Line />
           </s.ContentProfile>
-          <s.DivAdmPayment>
-            <s.Title style={{ marginBottom: '0' }}>
-              Administrar meios de pagamento
-            </s.Title>
-            <ArrowForwardIcon fontSize="large" />
-          </s.DivAdmPayment>
+
+          <Link style={{ width: '100%' }} href="/carregarvalor/">
+            <s.DivAdmPayment>
+              <s.Title style={{ marginBottom: '0' }}>
+                Administrar meios de pagamento
+              </s.Title>
+              <ArrowForwardIcon fontSize="large" />
+            </s.DivAdmPayment>
+          </Link>
           <s.DivCVU>
             <s.TitleDivCVU>
               Copiar seu CVU ou alias para adicionar ou transferir valor a

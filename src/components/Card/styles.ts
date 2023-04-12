@@ -22,7 +22,6 @@ export const ContainerButton = styled.div`
   align-items: center;
   margin: 10px;
   gap: 20px;
-  
 `;
 
 export const ButtonCard = styled.button`
@@ -33,4 +32,5 @@ export const ButtonCard = styled.button`
   font-weight: bold;
   width: 50%;
   background-color: #c1fd35;
+  text-align: center;
 `;

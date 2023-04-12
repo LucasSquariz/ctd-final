@@ -7,4 +7,4 @@ export type ActivityTypes = {
   id: number;
   origin: string;
   type: string;
-}[];
+};

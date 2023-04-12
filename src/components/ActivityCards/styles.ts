@@ -57,11 +57,12 @@ export const ActivityTitle = styled.h1`
 
 export const ActivityCards = styled.div`
   border-bottom: 1px solid black;
+  text-decoration: none;
   margin: 1rem;
   padding-bottom: 0.5rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center;  
 `;
 
 export const ActivityCardsDescriptionAndImg = styled.div`

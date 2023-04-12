@@ -1,11 +1,47 @@
 import * as s from './style';
 import GreenCircleImg from '../../assets/greenCircleImg';
-import SearchImg from '../../assets/searchImg';
+import AddCardImg from '../../assets/AddCardImg';
 import RightArrowImg from '../../assets/rightArrowImg';
+import RightArrowGreenImg from '../../assets/RightArrowGreenImg';
 import LayoutAuth from 'components/LayoutAuth';
 import Sidebar from 'components/Sidebar';
 
-const Inicio = () => {
+import { useGetCards } from 'hooks/useCards/useGetCards';
+import { useDeleteCard } from 'hooks/useCards/useDeleteCard';
+import { useEffect, useState } from 'react';
+import { useAuthState } from 'contexts/auth/AuthContext';
+
+const Cartao = () => {
+  const [addNewCard, setAddNewCard] = useState(false);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  const { user } = useAuthState();
+
+  const { mutate } = useDeleteCard();
+
+  const { data: cardsList, refetch } = useGetCards(user?.user_id);
+
+  const onClick = (e: any) => {
+    e.preventDefault();
+    setAddNewCard(true);
+  };
+
+  useEffect(() => {
+    if (loading) {
+      setLoading(false);
+    }
+  }, [loading]);
+
+  const handleDeleteCard = (userId: any, cardNumber: any) => {
+    mutate(
+      { userId: userId, cardNumber: cardNumber },
+      {
+        onSuccess: () => refetch(),
+        onError: err => console.log(err)
+      }
+    );
+  };
+
   return (
     <LayoutAuth>
       <s.ContainerPage>
@@ -19,98 +55,36 @@ const Inicio = () => {
                 </s.MoneyTextContainer>
                 <s.MoreAddCartao>
                   <s.MoreAddCartaoLink href="cartaoadd">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="34"
-                      height="34"
-                      viewBox="0 0 34 34"
-                      fill="none"
-                    >
-                      <circle
-                        cx="17"
-                        cy="17"
-                        r="16.35"
-                        stroke="#C1FD35"
-                        strokeWidth="1.3"
-                      />
-                      <path
-                        d="M16.75 10V24.5"
-                        stroke="#C1FD35"
-                        strokeWidth="1.3"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M24 17L9.5 17"
-                        stroke="#C1FD35"
-                        strokeWidth="1.3"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
+                    <AddCardImg />
                     Novo cartão
                   </s.MoreAddCartaoLink>
                   <s.MoreAddCartaoLink href="cartaoadd">
-                    <svg
-                      width="22"
-                      height="23"
-                      viewBox="0 0 22 23"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M2 10C1.17157 10 0.5 10.6716 0.5 11.5C0.5 12.3284 1.17157 13 2 13L2 10ZM21.0607 12.5607C21.6464 11.9749 21.6464 11.0251 21.0607 10.4393L11.5147 0.893397C10.9289 0.307611 9.97918 0.307611 9.3934 0.893398C8.80761 1.47918 8.80761 2.42893 9.3934 3.01472L17.8787 11.5L9.3934 19.9853C8.80761 20.5711 8.80761 21.5208 9.3934 22.1066C9.97919 22.6924 10.9289 22.6924 11.5147 22.1066L21.0607 12.5607ZM2 13L20 13L20 10L2 10L2 13Z"
-                        fill="#C1FD35"
-                      ></path>
-                    </svg>
+                    <RightArrowGreenImg />
                   </s.MoreAddCartaoLink>
                 </s.MoreAddCartao>
               </s.MoneyContainer>
             </s.ContentMoneyContainer>
             <s.ActivityContainer>
               <s.ActivityTitle>Seus cartões</s.ActivityTitle>
-              <s.ActivityCards>
-                <s.ActivityCardsDescriptionAndImg>
-                  <GreenCircleImg />
-                  <s.ActivityCardsDescription>
-                    Termina em 0000
-                  </s.ActivityCardsDescription>
-                </s.ActivityCardsDescriptionAndImg>
-                <s.ActivityCardsCashAndDate>
-                  <s.ActivityCardsCash>Eliminar</s.ActivityCardsCash>
-                </s.ActivityCardsCashAndDate>
-              </s.ActivityCards>
-              <s.ActivityCards>
-                <s.ActivityCardsDescriptionAndImg>
-                  <GreenCircleImg />
-                  <s.ActivityCardsDescription>
-                    Termina em 0027
-                  </s.ActivityCardsDescription>
-                </s.ActivityCardsDescriptionAndImg>
-                <s.ActivityCardsCashAndDate>
-                  <s.ActivityCardsCash>Eliminar</s.ActivityCardsCash>
-                </s.ActivityCardsCashAndDate>
-              </s.ActivityCards>
-              <s.ActivityCards>
-                <s.ActivityCardsDescriptionAndImg>
-                  <GreenCircleImg />
-                  <s.ActivityCardsDescription>
-                    Termina em 0077
-                  </s.ActivityCardsDescription>
-                </s.ActivityCardsDescriptionAndImg>
-                <s.ActivityCardsCashAndDate>
-                  <s.ActivityCardsCash>Eliminar</s.ActivityCardsCash>
-                </s.ActivityCardsCashAndDate>
-              </s.ActivityCards>
-              <s.ActivityCards>
-                <s.ActivityCardsDescriptionAndImg>
-                  <GreenCircleImg />
-                  <s.ActivityCardsDescription>
-                    Termina em 1029
-                  </s.ActivityCardsDescription>
-                </s.ActivityCardsDescriptionAndImg>
-                <s.ActivityCardsCashAndDate>
-                  <s.ActivityCardsCash>Eliminar</s.ActivityCardsCash>
-                </s.ActivityCardsCashAndDate>
-              </s.ActivityCards>
+              {!loading &&
+                cardsList?.length !== 0 &&
+                cardsList?.map((card: any, index: number) => (
+                  <s.ActivityCards key={index}>
+                    <s.ActivityCardsDescriptionAndImg>
+                      <GreenCircleImg />
+                      <s.ActivityCardsDescription>
+                        Termina em {card.number_id.toString().slice(-4)}
+                      </s.ActivityCardsDescription>
+                    </s.ActivityCardsDescriptionAndImg>
+                    <s.ActivityCardsCashAndDate>
+                      <s.ActivityCardsCash
+                        onClick={() => handleDeleteCard(user?.user_id, card.id)}
+                      >
+                        Eliminar
+                      </s.ActivityCardsCash>
+                    </s.ActivityCardsCashAndDate>
+                  </s.ActivityCards>
+                ))}
               <s.MoreActivities>
                 <s.MoreActivitiesTitle>
                   Ver todos seus cartões
@@ -125,4 +99,4 @@ const Inicio = () => {
   );
 };
 
-export default Inicio;
+export default Cartao;

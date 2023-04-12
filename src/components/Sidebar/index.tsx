@@ -24,10 +24,19 @@ const Sidebar = () => {
             Seu Perfil
           </s.LinksNavBar>
         </Link>
-        <s.LinksNavBar>Carregar valor</s.LinksNavBar>
-        <s.LinksNavBar>Pagar serviços</s.LinksNavBar>
+        <Link href={'/carregarvalor'}>
+          <s.LinksNavBar activePath={pathname === '/carregarvalor'}>
+            Carregar valor
+          </s.LinksNavBar>
+        </Link>
+        <Link href={'/pix'}>
+          <s.LinksNavBar activePath={pathname === '/pix'}>Pix</s.LinksNavBar>
+        </Link>
+
         <Link href="/cartao">
-          <s.LinksNavBar activePath={pathname === '/cartao'}>
+          <s.LinksNavBar
+            activePath={pathname === '/cartao' || pathname === '/cartaoadd'}
+          >
             Cartões
           </s.LinksNavBar>
         </Link>

@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const ContainerPage = styled.div`
   height: 100%;
   display: grid;
+  min-height: 1215px;
   grid-template-columns: 2.5fr 10fr;
   justify-content: space-between;
   ${({ theme }) => css`
@@ -215,7 +216,7 @@ export const ActivityCardsDescription = styled.div`
 
 export const ActivityCardsCashAndDate = styled.div``;
 
-export const ActivityCardsCash = styled.h1`
+export const ActivityCardsCash = styled.button`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xsmall};
     font-weight: ${theme.font.light};

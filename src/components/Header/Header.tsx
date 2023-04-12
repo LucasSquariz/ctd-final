@@ -68,8 +68,8 @@ const authItems: ItensTypes = [
     link: '/inicio'
   },
   {
-    label: 'Pagar serviços',
-    link: '/inicio'
+    label: 'Pix',
+    link: '/pix'
   },
   {
     label: 'Cartões',

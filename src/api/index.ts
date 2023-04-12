@@ -23,7 +23,8 @@ export function setupApiClient(
     baseURL: process.env.NEXT_PUBLIC_API_HOST
   });
 
-  api.defaults.headers.common.Authorization = `${token}`;
+  api.defaults.headers.common.Authorization = `${token}`;  
+  
   api.interceptors.request.use(
     config => {
       cookies = parseCookies(ctx);

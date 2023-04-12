@@ -1,7 +1,7 @@
 export type SignUp = {
-  nome: string;
-  sobrenome: string;
-  cpf: string;
+  firstname: string;
+  lastname: string;
+  dni: number;
   email: string;
   password: string;
   confirmaPassword?: string;

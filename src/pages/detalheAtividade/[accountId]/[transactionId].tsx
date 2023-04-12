@@ -4,28 +4,61 @@ import useGetActivityDetailsById from 'hooks/useGetActivityDetailsById';
 import * as s from './style';
 import AprovalImg from 'assets/aprovalImg';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-/* export const getStaticPaths = async () => {   
+export async function getServerSideProps(context: any) {
   return {
-    paths: [{ params: { accountId: '1' } }, { params: { transactionId: '43' } }],
-    fallback: false
+    props: {} // will be passed to the page component as props
   };
-};
+}
 
-export async function getStaticProps({ params }: any) {
-  const data = useGetActivityDetailsById(
-    params.accountId,
-    params.transactionId
-  );
-  console.log(data);
-  return {
-    props: {
-      params
+const DetalheAtividade = () => {
+  const router = useRouter();
+  const { accountId, transactionId } = router.query;
+
+  /* @ts-ignore */
+  const activity = useGetActivityDetailsById(accountId, transactionId);
+  console.log(activity);
+
+  const monthSelect = (month: string) => {
+    switch (month) {
+      case '01':
+        return 'janeiro';
+      case '02':
+        return 'fevereiro';
+      case '03':
+        return 'março';
+      case '04':
+        return 'abril';
+      case '05':
+        return 'maio';
+      case '06':
+        return 'junho';
+      case '07':
+        return 'julho';
+      case '08':
+        return 'agosto';
+      case '09':
+        return 'setembro';
+      case '10':
+        return 'outubro';
+      case '11':
+        return 'novembro';
+      case '12':
+        return 'dezembro';
     }
   };
-} */
 
-const DetalheAtividade = ({ props }: any) => {
+  const dateFormat = (date: string) => {
+    date.split('-');
+    const year = date[2] + date[3];
+    const month = monthSelect(date[5] + date[6]);
+    const day = date[8] + date[9];
+    const hours = date[11] + date[12];
+    const minutes = date[14] + date[15];
+    return `Criado em ${day} de ${month} de ${year} às ${hours}:${minutes}h`;
+  };
+
   return (
     <>
       <LayoutAuth>
@@ -40,7 +73,7 @@ const DetalheAtividade = ({ props }: any) => {
                 </s.AprovalContainer>
                 <s.DateContainer>
                   <s.DateTitle>
-                    Criado em 17 de agosto de 2022 às 16:34h
+                    {activity?.data?.dated && dateFormat(activity?.data?.dated)}
                   </s.DateTitle>
                 </s.DateContainer>
               </s.DateAprovalContainer>
@@ -49,13 +82,17 @@ const DetalheAtividade = ({ props }: any) => {
                   <s.TransferAmountTitle>
                     Tranferência em dinheiro
                   </s.TransferAmountTitle>
-                  <s.TransferAmount>$1.266,57</s.TransferAmount>
+                  <s.TransferAmount>{`R$${activity?.data?.amount}`}</s.TransferAmount>
                 </s.TransferAmountContainer>
                 <s.TransferDestinationContainer>
                   <s.TransferDestinationTitle>
                     Transferido para
                   </s.TransferDestinationTitle>
-                  <s.TransferDestination>Rodrigo Vaccaro</s.TransferDestination>
+                  <s.TransferDestination>
+                    {activity?.data?.destination
+                      ? activity?.data?.destination
+                      : 'Desconhecido'}
+                  </s.TransferDestination>
                 </s.TransferDestinationContainer>
                 <s.TransferNumberContainer>
                   <s.TransferNumberTitle>

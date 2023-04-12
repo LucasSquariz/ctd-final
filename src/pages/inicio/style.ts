@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 export const ContainerPage = styled.div`
   height: 100%;
   display: grid;
+  min-height: 1215px;
   grid-template-columns: 2.5fr 10fr;
   justify-content: space-between;
   ${({ theme }) => css`
@@ -73,7 +74,7 @@ export const CardOptionsContainer = styled.div`
 
 export const CardOptionsText = styled.h1`
   color: white;
-  ${({ theme }) => css`    
+  ${({ theme }) => css`
     margin-left: 1rem;
     font-size: ${theme.font.sizes.xxsmall};
     font-weight: ${theme.font.light};
@@ -96,7 +97,7 @@ export const Button = styled.button`
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.xsmall};    
+    font-size: ${theme.font.sizes.xsmall};
     font-weight: ${theme.font.bold};
     background-color: ${theme.colors.green};
     border-radius: ${theme.border.radius};
@@ -107,7 +108,7 @@ export const SearchBarLabel = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 2rem;  
+  margin-top: 2rem;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
