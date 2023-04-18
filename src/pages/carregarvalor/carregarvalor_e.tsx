@@ -108,6 +108,7 @@ const Carregarvalor_e: NextPage = (props: Props) => {
   };
 
   const handleClick = (): any => {
+    /* @ts-ignore */
     pdfMake.createPdf(docDefinition).download('document.pdf');
   };
   return (
