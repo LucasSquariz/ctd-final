@@ -9,7 +9,7 @@ import { SubmitHandler } from 'react-hook-form';
 import { Button } from 'components/Button';
 import { Form } from 'styles/form';
 import { useRouter } from 'next/router';
-import LayoutGuest from 'components/LayoutGuest';
+
 const Cadastro: NextPage = (): any => {
   const schema = Yup.object().shape({
     nome: Yup.string().required(),
@@ -77,79 +77,77 @@ const Cadastro: NextPage = (): any => {
   };
 
   return (
-    <LayoutGuest>
-      <div
-        style={{
-          display: 'flex',
-          width: '100%',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          paddingBottom: '5rem',
-          backgroundColor: '#272727',
-          height: '100vh'
-        }}
-      >
-        <Form onSubmit={handleSubmit(handleSignUp)}>
-          <h1>Criar Conta</h1>
-          <Input
-            type="text"
-            name="nome"
-            id="nome"
-            placeholder="Nome"
-            control={control}
-          />
-          <Input
-            type="text"
-            name="sobrenome"
-            id="sobrenome"
-            placeholder="Sobrenome"
-            control={control}
-          />
+    <div
+      style={{
+        display: 'flex',
+        width: '100%',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingBottom: '5rem',
+        backgroundColor: '#272727',
+        height: '100vh'
+      }}
+    >
+      <Form onSubmit={handleSubmit(handleSignUp)}>
+        <h1>Criar Conta</h1>
+        <Input
+          type="text"
+          name="nome"
+          id="firstname"
+          placeholder="Nome"
+          control={control}
+        />
+        <Input
+          type="text"
+          name="sobrenome"
+          id="lastname"
+          placeholder="Sobrenome"
+          control={control}
+        />
 
-          <Input
-            type="number"
-            name="dni"
-            id="dni"
-            placeholder="CPF"
-            control={control}
-          />
-          <Input
-            type="email"
-            name="email"
-            id="email"
-            placeholder="e-mail"
-            control={control}
-          />
-          <p>
-            Use entre 6 e 20 caracteres (deve conter pelo menos 1 caractere
-            especial, uma letra maiúscula e um número)
-          </p>
-          <Input
-            type="text"
-            name="password"
-            id="password"
-            placeholder="Senha"
-            control={control}
-          />
-          <Input
-            type="text"
-            name="confirmaPassword"
-            id="confirmaPassword"
-            placeholder="Confirmar senha"
-            control={control}
-          />
-          <Input
-            type="text"
-            name="telefone"
-            id="telefone"
-            placeholder="Telefone"
-            control={control}
-          />
-          <Button type="submit">Criar Conta</Button>
-        </Form>
-      </div>
-    </LayoutGuest>
+        <Input
+          type="text"
+          name="dni"
+          id="dni"
+          placeholder="CPF"
+          control={control}
+        />
+        <Input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="e-mail"
+          control={control}
+        />
+        <p>
+          Use entre 6 e 20 caracteres (deve conter pelo menos 1 caractere
+          especial, uma letra maiúscula e um número)
+        </p>
+        <Input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Senha"
+          control={control}
+        />
+        <Input
+          type="password"
+          name="confirmaPassword"
+          id="confirmaPassword"
+          placeholder="Confirmar senha"
+          control={control}
+        />
+        <Input
+          type="text"
+          name="telefone"
+          id="telefone"
+          placeholder="Telefone"
+          control={control}
+        />
+        <Button type="submit">Criar Conta</Button>
+      </Form>
+    </div>
   );
 };
 

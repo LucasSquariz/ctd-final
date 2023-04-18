@@ -9,6 +9,11 @@ export const ContainerPage = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
   `};
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const NavBar = styled.div`
@@ -62,11 +67,16 @@ export const ContentContainer = styled.div`
     background-color: ${theme.colors.gallery};
     color: ${theme.colors.black};
   `};
+
+  @media (max-width: 600px) {
+    margin: 104px 20px 0 20px;
+  }
 `;
 
 export const ContentMoneyContainer = styled.div`
   height: 230px;
   display: flex;
+  padding-right: 1rem;
   justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   ${({ theme }) => css`
@@ -96,7 +106,7 @@ export const MoneyTextContainer = styled.h1`
 export const MoneyValueContainer = styled.h1`
   display: flex;
   align-items: flex-end;
-  padding: 1.5vh;
+  padding: 1.5rem;
   border-radius: 100px;
   ${({ theme }) => css`
     border: 1px solid ${theme.colors.green};

@@ -16,6 +16,8 @@ import Cartaoadd from 'assets/cardadd';
 import * as s from './styles';
 import { Button } from 'components/Button';
 import { useAuthState } from 'contexts/auth/AuthContext';
+import GreenCircleImg from 'assets/greenCircleImg';
+import { useGetCards } from 'hooks/useCards/useGetCards';
 
 type Response = {
   account_id: number;
@@ -29,7 +31,7 @@ type Response = {
 export default function carregarvalor_b() {
   const { user } = useAuthState();
   const axios = require('axios');
-
+  const [loading, setLoading] = useState<boolean>(true);
   // useEffect(() => {
 
   //   const accountId = 'your_account_id';
@@ -49,6 +51,12 @@ export default function carregarvalor_b() {
   const handleChangeCartao = (event: ChangeEvent<HTMLInputElement>): void => {
     setcartaoSelect(event.target.value as string);
   };
+  useEffect(() => {
+    if (loading) {
+      setLoading(false);
+    }
+  }, [loading]);
+  const { data: cardsList, refetch } = useGetCards(user?.user_id);
 
   return (
     <>
@@ -57,11 +65,6 @@ export default function carregarvalor_b() {
           <Sidebar />
           <s.Content>
             <s.ContainerEnglobaDivs>
-              <s.SetaEText>
-                {' '}
-                <RightArrowImg />
-                <span>Carregar Valor</span>
-              </s.SetaEText>
               <s.ContainerCarregarValorB
                 style={{ padding: '2em', margin: '2em' }}
                 vertical={true}
@@ -86,31 +89,23 @@ export default function carregarvalor_b() {
                     value={cartaoSelect}
                     onChange={handleChangeCartao}
                   >
-                    <FormControlLabel
-                      style={{
-                        color: 'black',
-                        display: 'flex',
-                        flexDirection: 'row-reverse',
-                        alignItems: 'center',
-                        margin: '1.5em'
-                      }}
-                      value="female"
-                      control={<Radio />}
-                      label="Final 0000"
-                    />
-                    <span>____________________</span>
-                    <FormControlLabel
-                      style={{
-                        color: 'black',
-                        display: 'flex',
-                        flexDirection: 'row-reverse',
-                        alignItems: 'center',
-                        margin: '1.5em'
-                      }}
-                      value="male"
-                      control={<Radio />}
-                      label="Final 1452"
-                    />
+                    {!loading &&
+                      cardsList?.length !== 0 &&
+                      cardsList?.map((card: any, index: number) => (
+                        <FormControlLabel
+                          key={index}
+                          style={{
+                            color: 'black',
+                            display: 'flex',
+                            flexDirection: 'row-reverse',
+                            alignItems: 'center',
+                            margin: '1.5em'
+                          }}
+                          value="female"
+                          control={<Radio />}
+                          label={card.number_id.toString().slice(-4)}
+                        />
+                      ))}
                   </RadioGroup>
                 </FormControl>
 
@@ -121,14 +116,11 @@ export default function carregarvalor_b() {
                     <Link href={'/cartaoadd'}> Novo Cartão </Link>
                   </s.SpanCarregarValorA>
                 </s.ContainerCarregarValorB>
-
-                <s.SpanCarregarValor primary={false}>
-                  <Button>
-                    <Link href={'/carregarvalor/carregarvalor_c'}>
-                      Continuar
-                    </Link>
-                  </Button>
-                </s.SpanCarregarValor>
+                <s.ButtonsContainer>
+                  <Link href={'/carregarvalor/carregarvalor_c'}>
+                    <s.ContainerButton>Continuar</s.ContainerButton>
+                  </Link>
+                </s.ButtonsContainer>
               </s.ContainerCarregarValorB>
             </s.ContainerEnglobaDivs>
           </s.Content>

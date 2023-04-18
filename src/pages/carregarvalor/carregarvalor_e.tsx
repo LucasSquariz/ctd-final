@@ -164,22 +164,27 @@ const Carregarvalor_e: NextPage = (props: Props) => {
                 </s.ContainerCarregarValorE>
 
                 <s.EnglobaBotaoD style={{ display: 'flex' }}>
-                  <Button style={{ margin: '10px', backgroundColor: 'gray' }}>
+                  <s.ContainerButton
+                    style={{ margin: '10px', backgroundColor: 'gray' }}
+                  >
                     <s.SpanCarregarValor
                       style={{ color: 'black' }}
                       primary={false}
                     >
-                      <Link href="/carregarvalor/">Voltar ao início</Link>
+                      <Link href="/carregarvalor">Voltar ao início</Link>
                     </s.SpanCarregarValor>
-                  </Button>
-                  <Button style={{ margin: '10px' }} onClick={handleClick}>
+                  </s.ContainerButton>
+                  <s.ContainerButton
+                    style={{ margin: '10px' }}
+                    onClick={handleClick}
+                  >
                     <s.SpanCarregarValor
                       style={{ color: 'black' }}
                       primary={false}
                     >
                       Download do comprovante
                     </s.SpanCarregarValor>
-                  </Button>
+                  </s.ContainerButton>
                 </s.EnglobaBotaoD>
               </div>
             </s.ContainerEnglobaDivs>

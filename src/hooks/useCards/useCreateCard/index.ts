@@ -9,23 +9,32 @@ interface CustomError extends Error {
   };
 }
 
-interface CreateCardInput {
-  number: string;
-  expiry: string;
-  cvc: string;
-  name: string;
-  focus: string;
+interface CreateCard {
+  cod: number;
+  expiration_date: string;
+  first_last_name: string;
+  number_id: number;
 }
 
-export async function createCard(input: any) {  
+export interface Data {
+  account_id: number;
+  cod: number;
+  expiration_date: string;
+  first_last_name: string;
+  id: number;
+  number_id: number;
+}
+
+export const createCardRequest = async (
+  account_id: string,
+  createCard: CreateCard
+) => {
   try {
-    console.log(input)
-    await api.post(`/accounts/${input.userId}/cards/`, {
-      cod: input?.input?.cvc,
-      expiration_date: input?.input?.expiry,
-      first_last_name: input?.input?.name,
-      number_id: input?.input?.number
-    });
+    const { data } = await api.post(
+      `/accounts/${account_id}/cards`,
+      createCard
+    );
+    return data as Data;
   } catch (e: unknown) {
     if (e instanceof Error) {
       const err: CustomError = e;
@@ -33,8 +42,10 @@ export async function createCard(input: any) {
       return Promise.reject(errorResponse ?? e);
     }
   }
-}
+};
 
-export function useCreateCard() {
-  return useMutation(createCard);
+export function useCreateCard(account_id: string) {
+  return useMutation((createCard: CreateCard) =>
+    createCardRequest(account_id, createCard)
+  );
 }

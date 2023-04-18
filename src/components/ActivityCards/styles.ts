@@ -3,6 +3,7 @@ import { ActivePaginationPath } from './types';
 
 export const SearchBarLabel = styled.label<ActivePaginationPath>`
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
   margin-top: 2rem;
@@ -16,16 +17,24 @@ export const SearchBarLabel = styled.label<ActivePaginationPath>`
 
 export const SearchContainer = styled.div<ActivePaginationPath>`
   display: flex;
+  width: 100%;
+  gap: 20px;
   justify-content: space-between;
   margin-top: 2rem;
   ${({ activePath }) => css`
     display: ${activePath ? '' : 'none'};
   `}
+
+  @media (max-width: 931px) {
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+  }
 `;
 
 export const SearchBarLabelActivity = styled.label`
   display: flex;
-  width: 65rem;
+  width: 100%;
   align-items: center;
   justify-content: center;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
@@ -38,6 +47,7 @@ export const SearchBarLabelActivity = styled.label`
 export const ActivityContainer = styled.div`
   background-color: white;
   height: 100%;
+  width: 100%;
   margin-top: 2rem;
   padding: 2rem;
   flex-wrap: nowrap;
@@ -62,7 +72,7 @@ export const ActivityCards = styled.div`
   padding-bottom: 0.5rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;  
+  align-items: center;
 `;
 
 export const ActivityCardsDescriptionAndImg = styled.div`
@@ -118,4 +128,9 @@ export const MoreActivitiesTitle = styled.div`
   `}
 `;
 
-export const PaginationContainer = styled.div``;
+export const PaginationContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;

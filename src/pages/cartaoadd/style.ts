@@ -1,13 +1,19 @@
 import styled, { css } from 'styled-components';
 
 export const ContainerPage = styled.div`
-  height: 100vh;
+  height: 100%;
+  min-height: 1215px;
   display: grid;
   grid-template-columns: 2.5fr 10fr;
   justify-content: space-between;
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
   `};
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const NavBar = styled.div`
@@ -61,6 +67,10 @@ export const ContentContainer = styled.div`
     background-color: ${theme.colors.gallery};
     color: ${theme.colors.black};
   `};
+
+  @media (max-width: 600px) {
+    margin: 104px 20px 0 20px;
+  }
 `;
 
 export const ContentMoneyContainer = styled.div`

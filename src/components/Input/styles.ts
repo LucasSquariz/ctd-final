@@ -53,7 +53,6 @@ export const Input = styled.input<StyledContainerProps>`
   width: 100%;
   outline: none;
   color: ${({ theme }) => theme.colors.gray[400]};
-  margin-top: 5px;
   &::placeholder {
     font-family: 'Open Sans';
     font-style: normal;

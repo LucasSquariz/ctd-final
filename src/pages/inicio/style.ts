@@ -9,6 +9,11 @@ export const ContainerPage = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
   `};
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Content = styled.div`
@@ -19,17 +24,22 @@ export const Content = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  margin: 104px 79px;
+  margin: 104px 80px;
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
     color: ${theme.colors.black};
   `};
+
+  @media (max-width: 600px) {
+    margin: 104px 20px 0 20px;
+  }
 `;
 
 export const ContentMoneyContainer = styled.div`
   height: 230px;
   display: flex;
   justify-content: space-between;
+  flex-direction: column-reverse;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   ${({ theme }) => css`
     background-color: ${theme.colors.color1};
@@ -42,7 +52,7 @@ export const MoneyContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  margin: 0 0 3rem 3rem;
+  margin: 0 3rem 3rem 3rem;
 `;
 
 export const MoneyTextContainer = styled.h1`
@@ -58,7 +68,10 @@ export const MoneyValueContainer = styled.h1`
   display: flex;
   align-items: flex-end;
   padding: 1.5vh;
+  height: 74px;
   border-radius: 100px;
+  max-width: 285px;
+  width: 100%;
   ${({ theme }) => css`
     border: 1px solid ${theme.colors.green};
     font-size: ${theme.font.sizes.xlarge};
@@ -69,7 +82,7 @@ export const MoneyValueContainer = styled.h1`
 export const CardOptionsContainer = styled.div`
   display: flex;
   margin: 2rem 4rem 0 0;
-  justify-items: space-between;
+  justify-content: end;
 `;
 
 export const CardOptionsText = styled.h1`
@@ -86,6 +99,13 @@ export const ButtonsContainer = styled.div`
   justify-content: space-between;
   margin-top: 2rem;
   row-gap: 200px;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+  }
 `;
 
 export const Button = styled.button`
@@ -102,6 +122,10 @@ export const Button = styled.button`
     background-color: ${theme.colors.green};
     border-radius: ${theme.border.radius};
   `}
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const SearchBarLabel = styled.label`

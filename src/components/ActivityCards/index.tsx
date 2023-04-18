@@ -180,7 +180,6 @@ const ActivityCards = ({ activityData }: any) => {
               sx={{
                 '.MuiPagination-ul': {
                   justifyContent: 'center',
-                  width: '950px',
                   height: '35px'
                 }
               }}

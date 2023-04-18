@@ -65,7 +65,7 @@ const authItems: ItensTypes = [
   },
   {
     label: 'Carregar valor',
-    link: '/inicio'
+    link: '/carregarvalor'
   },
   {
     label: 'Pix',

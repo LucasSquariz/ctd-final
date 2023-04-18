@@ -38,10 +38,6 @@ const Carregarvalor_c: NextPage = (props: Props) => {
           <s.Content>
             <div style={{ display: 'grid', placeItems: 'center' }}>
               <s.ContainerEnglobaDivs>
-                <s.SetaEText>
-                  <RightArrowImg />
-                  <div>Carregar Valor</div>
-                </s.SetaEText>
                 <div
                   style={{
                     display: 'grid',
@@ -65,13 +61,9 @@ const Carregarvalor_c: NextPage = (props: Props) => {
                       style={{ margin: '0.5em' }}
                       primary={false}
                     >
-                      <Button>
-                        {' '}
-                        <Link href={'/carregarvalor/carregarvalor_d'}>
-                          {' '}
-                          Continuar
-                        </Link>
-                      </Button>
+                      <Link href={'/carregarvalor/carregarvalor_d'}>
+                        <s.ContainerButton> Continuar</s.ContainerButton>
+                      </Link>
                     </s.SpanCarregarValor>
                   </s.ContainerCarregarValorC>
                 </div>

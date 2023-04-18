@@ -6,6 +6,11 @@ export const Container = styled.div`
   gap: 20px;
   align-items: center;
   margin: 20px;
+
+  @media (max-width: 955px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const InputCard = styled.input`
@@ -33,4 +38,8 @@ export const ButtonCard = styled.button`
   width: 50%;
   background-color: #c1fd35;
   text-align: center;
+
+  @media (max-width: 955px) {
+    width: 100%;
+  }
 `;

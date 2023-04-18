@@ -1,17 +1,22 @@
 import styled, { css } from 'styled-components';
 
 export const ContainerPage = styled.div`
-  height: 100vh;    
+  height: 100%;
   display: grid;
-  grid-template-columns: 4fr 8fr;
-  
+  min-height: 1215px;
+  grid-template-columns: 2.5fr 10fr;
+
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
   `};
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const Content = styled.div`
-  height: 100%; 
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
     color: ${theme.colors.black};
@@ -19,25 +24,30 @@ export const Content = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-  margin: 10em 5em;
+  margin: 104px 80px;
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
     color: ${theme.colors.black};
   `};
+
+  @media (max-width: 600px) {
+    margin: 104px 20px 0 20px;
+  }
 `;
 
 export const SearchContainer = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-between;
-  margin-top: 2rem;
+  margin-top: 32px;
 `;
 
 export const SearchBarLabel = styled.label`
   display: flex;
-  width: 65rem;
+  width: 100%;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
     border-radius: ${theme.border.radius};
@@ -45,14 +55,14 @@ export const SearchBarLabel = styled.label`
 `;
 
 export const FilterContainer = styled.div`
-  width: 12rem;
-  height: 5rem;
+  width: 192px;
+  height: 80px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin-left: 1rem;
+  margin-left: 16px;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0rem 0.1875rem 0.5rem;
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xsmall};
     font-weight: ${theme.font.light};
@@ -75,7 +85,7 @@ export const FilterButton = styled.button`
 `;
 
 export const SearchBarInput = styled.input`
-  padding: 1.25rem;
+  padding: 20px;
   border: none;
   width: 100%;
   ${({ theme }) => css`
@@ -85,20 +95,22 @@ export const SearchBarInput = styled.input`
 `;
 
 export const ActivityContainer = styled.div`
+  display: flex;
+  width: 100%;
   background-color: white;
   height: 100%;
-  margin-top: 2rem;
-  padding: 2rem;
+  margin-top: 32px;
+  padding: 32px;
   flex-wrap: nowrap;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
   ${({ theme }) => css`
     border-radius: ${theme.border.radius};
   `}
 `;
 
 export const ActivityTitle = styled.h1`
-  border-bottom: 1px solid black;
-  margin: 1rem;
+  border-bottom: 0.0625rem solid black;
+  margin: 16px;
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xxsmall};
   `}
@@ -107,7 +119,7 @@ export const ActivityTitle = styled.h1`
 export const MoreActivities = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 16px;
 `;
 
 export const MoreActivitiesTitle = styled.h1`

@@ -6,7 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Divider from '@mui/material/Divider';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import FilterIcon from 'assets/filterIcon';
-import {  
+import {
   FormControlLabel,
   FormLabel,
   Radio,
@@ -57,7 +57,7 @@ const StyledMenu = styled((props: MenuProps) => (
   }
 }));
 
-export default function CustomizedMenus({FilterByDate}:any) {
+export default function CustomizedMenus({ FilterByDate }: any) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -66,8 +66,7 @@ export default function CustomizedMenus({FilterByDate}:any) {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
-  
+
   return (
     <div>
       <Button
@@ -83,12 +82,12 @@ export default function CustomizedMenus({FilterByDate}:any) {
           backgroundColor: '#C1FD35',
           color: 'black',
           fontWeight: 'bold',
-          width: '12rem',
+          width: '100%',
+          minWidth: '190px',
           height: '5rem',
           display: 'flex',
           justifyContent: 'space-around',
           alignItems: 'center',
-          marginLeft: '1rem',
           boxShadow: 'rgba(0, 0, 0, 0.24) 0px 3px 8px',
           borderRadius: '0.625rem',
           '&:hover': { backgroundColor: '#acdb3f', opacity: '0.5' },
@@ -125,7 +124,9 @@ export default function CustomizedMenus({FilterByDate}:any) {
           <FormLabel id="demo-radio-buttons-group-label">
             Período <KeyboardArrowDownIcon />
           </FormLabel>
-          <Typography onClick={() => FilterByDate('reset')}>limpar filtros</Typography>
+          <Typography onClick={() => FilterByDate('reset')}>
+            limpar filtros
+          </Typography>
         </div>
         <Divider sx={{ my: 0.5 }} />
         <RadioGroup

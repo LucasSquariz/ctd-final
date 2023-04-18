@@ -88,7 +88,9 @@ const Carregarvalor_d: NextPage = (props: Props) => {
                     {' '}
                     cvu {user?.cvu}
                   </s.SpanCarregarValor>{' '}
-                  <Button onClick={handleSubmit}>Transferir</Button>{' '}
+                  <s.ContainerButton onClick={handleSubmit}>
+                    Transferir
+                  </s.ContainerButton>{' '}
                 </s.ContainerCarregarValorD>
               </div>
             </s.ContainerEnglobaDivs>

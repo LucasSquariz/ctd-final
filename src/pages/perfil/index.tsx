@@ -86,9 +86,7 @@ const Perfil = () => {
   return (
     <LayoutAuth>
       <s.ContainerPage>
-        <s.SidebarContainer>
-          <Sidebar />
-        </s.SidebarContainer>
+        <Sidebar />
         <s.Content>
           <s.ContentProfile>
             <s.Title>Seus dados</s.Title>
@@ -255,7 +253,7 @@ const Perfil = () => {
                 style={{
                   cursor: 'pointer'
                 }}
-                size={37.56}
+                size={30}
                 color="#c1fd35"
                 onClick={handleClick}
               />
@@ -267,7 +265,7 @@ const Perfil = () => {
               </s.DivColumn>
               <MdContentCopy
                 style={{ cursor: 'pointer' }}
-                size={37.56}
+                size={30}
                 color="#c1fd35"
                 onClick={handleClickAlias}
               />

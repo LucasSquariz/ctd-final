@@ -1,8 +1,8 @@
 import * as s from './style';
 import GreenCircleImg from '../../assets/greenCircleImg';
-import AddCardImg from '../../assets/AddCardImg';
+import AddCardImg from '../../assets/addCardImg';
 import RightArrowImg from '../../assets/rightArrowImg';
-import RightArrowGreenImg from '../../assets/RightArrowGreenImg';
+import RightArrowGreenImg from '../../assets/rightArrowGreenImg';
 import LayoutAuth from 'components/LayoutAuth';
 import Sidebar from 'components/Sidebar';
 
@@ -10,6 +10,7 @@ import { useGetCards } from 'hooks/useCards/useGetCards';
 import { useDeleteCard } from 'hooks/useCards/useDeleteCard';
 import { useEffect, useState } from 'react';
 import { useAuthState } from 'contexts/auth/AuthContext';
+import { success } from 'helpers/notify/success';
 
 const Cartao = () => {
   const [addNewCard, setAddNewCard] = useState(false);
@@ -36,8 +37,10 @@ const Cartao = () => {
     mutate(
       { userId: userId, cardNumber: cardNumber },
       {
-        onSuccess: () => refetch(),
-        onError: err => console.log(err)
+        onSuccess: () => {
+          refetch();
+          success('Cartão Deletado com sucesso!');
+        }
       }
     );
   };

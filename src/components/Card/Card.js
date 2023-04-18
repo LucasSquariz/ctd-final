@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
+import router from 'next/router';
+import { useQueryClient } from 'react-query';
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/es/styles-compiled.css';
 import { useCreateCard } from 'hooks/useCards/useCreateCard';
 import { useAuthState } from 'contexts/auth/AuthContext';
+import { QUERY_KEY_GET_CARDS } from '../../hooks/useCards/useGetCards';
+import { formatDateCard } from '../../utils/formatDateCard';
 
 import * as S from './styles';
+import { success } from 'helpers/notify/success';
 
 export const Card = () => {
   const [state, setState] = useState({
@@ -16,7 +21,7 @@ export const Card = () => {
   });
 
   const { user } = useAuthState();
-  const { mutate: createCard } = useCreateCard();
+  const { mutate: createCard } = useCreateCard(user?.id);
 
   const handleInputChange = evt => {
     const { name, value } = evt.target;
@@ -35,16 +40,24 @@ export const Card = () => {
     setState(prev => ({ ...prev, focus: evt.target.name }));
   };
 
+  const queryClient = useQueryClient();
   const handleSubmit = () => {
-    createCard({
-      userId: user?.user_id,
-      input: {
-        cod: state.cvc,
-        expiration_date: state.expiry,
+    createCard(
+      {
+        cod: Number(state.cvc),
+        expiration_date: formatDateCard(state.expiry),
         first_last_name: state.name,
-        number_id: state.number
+        number_id: Number(state.number)
+      },
+      {
+        onSuccess: () => {
+          queryClient.invalidateQueries(QUERY_KEY_GET_CARDS);
+
+          success('Cartão Criado com sucesso!');
+          router.push('/cartao');
+        }
       }
-    });    
+    );
   };
 
   return (

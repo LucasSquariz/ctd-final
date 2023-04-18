@@ -1,46 +1,38 @@
 import styled, { css } from 'styled-components';
 
 export const ContainerPage = styled.div`
-  display: flex;
-  width: 100%;
+  height: 100%;
+  display: grid;
   min-height: 1215px;
+  grid-template-columns: 2.5fr 10fr;
+  justify-content: space-between;
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
   `};
-`;
 
-export const SidebarContainer = styled.div`
-  max-width: 276px;
-  width: 100%;
-  @media (max-width: 821px) {
-    display: none;
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
   }
 `;
 
 export const Content = styled.div`
-  width: 100%;
-  max-width: 1003px;
-  margin: 60px auto 0 auto;
-  margin-top: 60px;
+  margin: 104px 80px;
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
     color: ${theme.colors.black};
-    display: flex;
-    align-items: center;
-    flex-direction: column;
   `};
 
-  @media (max-width: 1391px) {
-    margin: 60px 50px 0 50px;
+  @media (max-width: 600px) {
+    margin: 104px 20px 0 20px;
   }
 `;
 
 export const ContentProfile = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 1003px;
   width: 100%;
-  margin: 40px auto;
+  margin-bottom: 40px;
   width: 100%;
   background: #ffffff;
   padding: 22px 32px 32px 32px;
@@ -57,8 +49,12 @@ export const Title = styled.h1`
   color: black;
   margin-bottom: 18px;
 
-  @media (max-width: 658px) {
-    font-size: 16px;
+  @media (max-width: 476px) {
+    font-size: 14px;
+  }
+
+  @media (max-width: 374px) {
+    font-size: 12px;
   }
 `;
 
@@ -80,6 +76,10 @@ export const UserData = styled.p`
   font-size: 16px;
   line-height: 22px;
   color: #201f22;
+
+  @media (max-width: 400px) {
+    font-size: 14px;
+  }
 `;
 
 export const Data = styled.p`
@@ -89,6 +89,10 @@ export const Data = styled.p`
   font-size: 16px;
   line-height: 22px;
   color: rgba(0, 0, 0, 0.5);
+
+  @media (max-width: 400px) {
+    font-size: 14px;
+  }
 `;
 export const Line = styled.div`
   width: 100%;
@@ -146,7 +150,7 @@ export const TitleDivCVU = styled.h1`
   margin-bottom: 39px;
 
   @media (max-width: 658px) {
-    font-size: 14px;
+    font-size: 12px;
   }
 `;
 
@@ -162,6 +166,10 @@ export const CVUTitle = styled.h2`
   font-size: 20px;
   line-height: 24px;
   color: #c1fd35;
+
+  @media (max-width: 658px) {
+    font-size: 16px;
+  }
 `;
 
 export const CVUData = styled.h2`
@@ -171,4 +179,8 @@ export const CVUData = styled.h2`
   font-size: 16px;
   line-height: 117.68%;
   color: #eeeaea;
+
+  @media (max-width: 658px) {
+    font-size: 14px;
+  }
 `;

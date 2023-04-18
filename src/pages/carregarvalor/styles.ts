@@ -1,31 +1,34 @@
 import { style } from '@mui/system';
 import styled, { css } from 'styled-components';
 import theme from 'styles/theme';
+import { ButtonProps } from '../../components/Button/types';
 
 export const ContainerEnglobaDivs = styled.div`
-  height: 100vh;
-  display: grid;
-  place-content: center;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
 `;
+
 export const ContainerEnglobaDivsA = styled.div`
-  height: 100vh;
   display: grid;
-  place-content: center;
-  @media (max-width: 850px) {
-    margin: 5.5em;
+  // place-content: center;
+  margin: 20px;
+  @media (max-width: 950px) {
+    display: flex;
   }
 `;
 
 export const ContainerCarregarValor = styled.div<{ vertical: boolean }>`
   background-color: #201f22;
-  margin: 0.3em;
   display: flex;
   justify-content: space-evenly;
   border-radius: 10px;
   align-items: center;
-  padding: '2em';
-  padding-right: '25em' !important;
-  width: '100%';
+  padding: 2em;
+  width: 100%;
 
   //width: 250px;
   ${props =>
@@ -36,14 +39,15 @@ export const ContainerCarregarValor = styled.div<{ vertical: boolean }>`
       justify-content: center;
       align-items: center;
     `}
-  @media (max-width: 850px) {
-    display: grid !important ;
-    place-items: center !important;
-    grid-template-columns: 1fr !important;
+  @media (max-width: 950px) {
+    display: flex;
     //  padding-right: 2em !important;
-    width: 100%;
-    margin: 1em auto;
-    padding: 0.7em 0.2em;
+    padding: 2em;
+  }
+  @media (max-width: 400px) {
+    display: flex;
+    //  padding-right: 2em !important;
+    padding: 2em;
   }
 `;
 export const SpanCarregarValor = styled.span<{ primary: boolean }>`
@@ -59,46 +63,74 @@ export const SpanCarregarValor = styled.span<{ primary: boolean }>`
 
       font-size: small;
     `}
+
+  @media (max-width: 1198px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 1000px) {
+    font-size: 18px;
+  }
+
+  @media (max-width: 655px) {
+    font-size: 16px;
+  }
 `;
 
 export const ContainerSpecific = styled.div`
-  display: 'flex';
-  justify-content: 'space-between';
-  align-items: ' center';
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   @media (max-width: 850px) {
-    display: grid !important ;
+    display: flex !important ;
     place-items: center !important;
     grid-template-columns: 1fr !important;
     //  padding-right: 2em !important;
-    width: 100%;
-    margin: 1em auto;
+
     padding: 0.7em 0.7em !important;
   }
 `;
 
 export const Content = styled.div`
+  margin: 104px 80px;
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
     color: ${theme.colors.black};
   `};
+
+  @media (max-width: 600px) {
+    margin: 104px 20px 0 20px;
+  }
 `;
 
 export const ContentContainer = styled.div`
-  margin: auto;
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
     color: ${theme.colors.black};
   `};
+  /* @media (max-width: 1391px) {
+    margin: 60px 50px 0 50px;
+  }
+*/
+  /* @media (max-width: 1391px) {
+    margin: 60px 50px 0 50px;
+  } */
 `;
 
 export const ContainerPage = styled.div`
   height: 100%;
   display: grid;
+  min-height: 1215px;
   grid-template-columns: 2.5fr 10fr;
   justify-content: space-between;
   ${({ theme }) => css`
     background-color: ${theme.colors.gallery};
   `};
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const SetaEText = styled.div`
@@ -133,15 +165,17 @@ export const ContainerCarregarValorB = styled.div<{ vertical: boolean }>`
       align-items: center;
     `}
   @media (max-width: 850px) {
-    display: grid !important ;
+    /* display: grid !important ;
     place-items: center !important;
     grid-template-columns: 1fr !important;
-    padding-right: 0 !important;
+    padding-right: 0 !important; */
     //width: 60%;
   }
   @media (min-width: 851px) {
     display: flex !important ;
     justify-content: center;
+    flex-direction: column;
+    width: 60%;
     // padding-right: 25em !important;
     //width: 60%;
   }
@@ -206,11 +240,11 @@ export const ContainerCarregarValorD = styled.div<{ vertical: boolean }>`
       justify-content: center;
       align-items: center;
     `}
-  @media (max-width: 850px) {
-    display: grid !important ;
+  @media (max-width: 990px) {
+    /* display: grid !important ;
     place-items: center !important;
-    grid-template-columns: 1fr !important;
-
+    grid-template-columns: 1fr !important; */
+    margin: auto;
     width: 100%;
     padding: 0;
   }
@@ -238,7 +272,7 @@ export const ContainerCarregarValorE = styled.div<{ vertical: boolean }>`
     grid-template-columns: 1fr !important;
     padding-right: 0 !important;
     width: 100% !important;
-    padding: 0;
+    padding: 0 !important;
   }
   @media (max-width: 1710px) and (min-width: 851px) {
     width: 80%;
@@ -309,4 +343,84 @@ export const CVUData = styled.h2`
 export const DivColumn = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const DivIcon = styled.div`
+  margin-left: 25px;
+  @media (max-width: 850px) {
+    margin-left: 0;
+  }
+`;
+export const ButtonsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  row-gap: 200px;
+`;
+
+const variants = {
+  primary: css`
+    background: ${({ theme }) => theme.colors.green};
+    color: ${({ theme }) => theme.colors.black};
+    border: 1px solid ${({ theme }) => theme.colors.color2};
+
+    &:hover {
+      opacity: 0.7;
+    }
+  `,
+  secondary: css`
+    background: ${({ theme }) => theme.colors.color2};
+    color: ${({ theme }) => theme.colors.green};
+    border: 1px solid ${({ theme }) => theme.colors.color2};
+
+    &:hover {
+      opacity: 0.7;
+    }
+  `,
+  gray: css`
+    background: ${({ theme }) => theme.colors.gris};
+    color: ${({ theme }) => theme.colors.black};
+    border: 1px solid ${({ theme }) => theme.colors.gris};
+
+    &:hover {
+      opacity: 0.7;
+    }
+  `
+};
+
+export const ContainerButton = styled.button<ButtonProps>`
+  ${({ theme, variant, color, background }) => css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2.5rem 1.25rem;
+    gap: 10px;
+    background: ${background || theme.colors.green};
+    width: 100%;
+    color: ${color || theme.colors.black};
+    border-radius: ${({ theme }) => theme.border.radius};
+    height: 2.9375rem;
+    transition: color 200ms;
+    border: 1px solid ${({ theme }) => theme.colors.green};
+    cursor: pointer;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+    width: 360px;
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    ${variant && variants[variant]};
+
+    @media (max-width: 650px) {
+      width: 260px;
+    }
+  `}
 `;
