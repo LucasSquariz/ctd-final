@@ -11,6 +11,7 @@ export async function getCardsList(userId: number) {
       return;
     }    
     const { data } = await api.get(`/accounts/${userId}/cards`);
+    console.log(data)
     return data ;
   } catch (err:any) {
     console.error(err);

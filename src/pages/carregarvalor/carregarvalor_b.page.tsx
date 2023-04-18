@@ -101,10 +101,11 @@ export default function carregarvalor_b() {
                             alignItems: 'center',
                             margin: '1.5em'
                           }}
-                          value="female"
-                          control={<Radio />}
+                          value={card.number_id.toString().slice(-4)}
+                          name={`${index}`}
+                          control={<Radio key={index} />}
                           label={card.number_id.toString().slice(-4)}
-                        />
+                        />                        
                       ))}
                   </RadioGroup>
                 </FormControl>
