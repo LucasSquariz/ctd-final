@@ -129,3 +129,5 @@ export const MoreActivitiesTitle = styled.h1`
     font-size: ${theme.font.sizes.xsmall};
   `}
 `;
+
+export default {};
