@@ -1,5 +1,4 @@
 import RightArrowImg from 'assets/rightArrowImg';
-import ExportSvg from 'assets/exportSvg';
 import { Button } from 'components/Button';
 import LayoutAuth from 'components/LayoutAuth';
 import Sidebar from 'components/Sidebar';
