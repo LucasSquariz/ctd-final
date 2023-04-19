@@ -337,7 +337,10 @@ export default function DrawerAppBar(props: Props) {
                 display: 'flex',
                 backgroundColor: ' #C1FD35',
                 justifyContent: 'center',
-                borderRadius: '30px 30px 0px 0px'
+                borderRadius: '30px 30px 0px 0px',
+                '@media(max-width: 780px)': {
+                  height: '160px',
+                }, 
               }}
             ></Box>
           </Box>
