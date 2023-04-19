@@ -227,8 +227,11 @@ export const ActivityCardsDescription = styled.div`
 export const ActivityCardsCashAndDate = styled.div``;
 
 export const ActivityCardsCash = styled.button`
+  border: none;
+  cursor: pointer;
+  background-color: white;
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.xsmall};
+    font-size: ${theme.font.sizes.xsmall};    
     font-weight: ${theme.font.light};
   `}
 `;

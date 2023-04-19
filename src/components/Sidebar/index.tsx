@@ -29,9 +29,9 @@ const Sidebar = () => {
             Carregar valor
           </s.LinksNavBar>
         </Link>
-        <Link href={'/pix'}>
+        {/* <Link href={'/pix'}>
           <s.LinksNavBar activePath={pathname === '/pix'}>Pix</s.LinksNavBar>
-        </Link>
+        </Link> */}
 
         <Link href="/cartao">
           <s.LinksNavBar

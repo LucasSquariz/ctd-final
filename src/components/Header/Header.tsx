@@ -67,10 +67,10 @@ const authItems: ItensTypes = [
     label: 'Carregar valor',
     link: '/carregarvalor'
   },
-  {
+ /*  {
     label: 'Pix',
     link: '/pix'
-  },
+  }, */
   {
     label: 'Cartões',
     link: '/cartao'

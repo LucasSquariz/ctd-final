@@ -147,7 +147,7 @@ export default function DrawerAppBar(props: Props) {
         >
           <iframe
             className="videoM"
-            src="//player.vimeo.com/video/622403092?title=0&amp;portrait=0&amp;byline=0&amp;autoplay=1&amp;muted=true&amp;loop=0"
+            src="//player.vimeo.com/video/622403092?title=0&amp;portrait=0&amp;byline=0&amp;autoplay=1&amp;muted=true&amp;loop=3"
             width="100%"
             height="100%"
           ></iframe>
@@ -183,7 +183,14 @@ export default function DrawerAppBar(props: Props) {
                 color: '#fff',
                 marginLeft: 4,
                 fontSize: '3rem',
-                width: '30%'
+                width: '30%',
+                '@media(max-width: 780px)': {
+                  fontSize: '2em'
+                },
+                '@media(max-width: 330px)': {
+                  fontSize: '1.8em',
+                  width: '50%'
+                }
               }}
             >
               De agora em diante, faça mais com seu dinheiro
@@ -216,7 +223,14 @@ export default function DrawerAppBar(props: Props) {
                   height: '200px',
                   borderRadius: '30px',
                   margin: '-14px 5px',
-                  padding: '5px'
+                  padding: '5px',
+                  '@media(max-width: 780px)': {
+                    width: '337px'
+                  },
+                  '@media(max-width: 330px)': {
+                    width: '300px',
+                    marginTop: '3em'
+                  }
                 }}
               >
                 <Typography
@@ -228,7 +242,10 @@ export default function DrawerAppBar(props: Props) {
                     fontWeight: 'bold',
                     borderBottom: '1px #C1FD35 solid',
                     width: '90%',
-                    padding: '22px 0px 5px 0px'
+                    padding: '22px 0px 5px 0px',                    
+                    '@media(max-width: 780px)': {
+                      fontSize: '1.5em'
+                    }
                   }}
                 >
                   Transferência
@@ -238,7 +255,11 @@ export default function DrawerAppBar(props: Props) {
                   sx={{
                     color: '#000',
                     marginLeft: 3,
-                    fontSize: '1.2rem'
+                    fontSize: '1.2rem',
+                    '@media(max-width: 780px)': {
+                      fontSize: '0.9em'
+                    },
+                    
                   }}
                 >
                   Com a Digital Money House você pode transferir dinheiro para
@@ -253,7 +274,13 @@ export default function DrawerAppBar(props: Props) {
                   height: '200px',
                   borderRadius: '30px',
                   margin: '-14px 5px',
-                  padding: '5px'
+                  padding: '5px',
+                  '@media(max-width: 780px)': {
+                    width: '337px'
+                  },
+                  '@media(max-width: 330px)': {
+                    width: '300px',                    
+                  }
                 }}
               >
                 <Typography
@@ -265,7 +292,10 @@ export default function DrawerAppBar(props: Props) {
                     fontWeight: 'bold',
                     borderBottom: '1px #C1FD35 solid',
                     width: '90%',
-                    padding: '22px 0px 5px 0px'
+                    padding: '22px 0px 5px 0px',
+                    '@media(max-width: 780px)': {
+                      fontSize: '1.5em'
+                    }
                   }}
                 >
                   Pagamento de serviços
@@ -275,7 +305,10 @@ export default function DrawerAppBar(props: Props) {
                   sx={{
                     color: '#000',
                     marginLeft: 3,
-                    fontSize: '1.2rem'
+                    fontSize: '1.2rem',
+                    '@media(max-width: 780px)': {
+                      fontSize: '0.9em'
+                    }
                   }}
                 >
                   Pague mensalmente por serviços com apenas 3 clicks. Fácil,
@@ -290,7 +323,7 @@ export default function DrawerAppBar(props: Props) {
                 display: 'flex',
                 backgroundColor: ' #C1FD35',
                 justifyContent: 'center',
-                borderRadius: '30px 30px 0px 0px'
+                borderRadius: '30px 30px 0px 0px',                
               }}
             ></Box>
           </Box>
