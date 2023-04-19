@@ -91,7 +91,7 @@ const DetalheAtividade = () => {
                   <s.TransferDestination>
                     {activity?.data?.destination
                       ? activity?.data?.destination
-                      : 'Desconhecido'}
+                      : 'Minha conta'}
                   </s.TransferDestination>
                 </s.TransferDestinationContainer>
                 <s.TransferNumberContainer>
