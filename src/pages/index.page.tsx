@@ -293,8 +293,7 @@ export default function DrawerAppBar(props: Props) {
                     width: '337px'
                   },
                   '@media(max-width: 330px)': {
-                    width: '300px',
-                    marginBottom: '5em'
+                    width: '300px',                    
                   }
                 }}
               >
