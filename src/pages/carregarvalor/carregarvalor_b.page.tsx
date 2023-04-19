@@ -101,7 +101,7 @@ export default function carregarvalor_b() {
                             alignItems: 'center',
                             margin: '1.5em'
                           }}
-                          value="female"
+                          value={card.number_id.toString().slice(-4)}
                           control={<Radio />}
                           label={card.number_id.toString().slice(-4)}
                         />
