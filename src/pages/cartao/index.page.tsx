@@ -20,7 +20,7 @@ const Cartao = () => {
 
   const { mutate } = useDeleteCard();
 
-  const { data: cardsList, refetch } = useGetCards(user?.id);
+  const { data: cardsList, refetch } = useGetCards(user?.id, () => {});
 
   const onClick = (e: any) => {
     e.preventDefault();
