@@ -14,7 +14,7 @@ const Cadastro: NextPage = (): any => {
   const schema = Yup.object().shape({
     firstname: Yup.string().required(),
     lastname: Yup.string().required(),
-    dni: Yup.number().required(),
+    dni: Yup.number().required().min(11).max(11),
     email: Yup.string().required(),
     password: Yup.string()
       .required()
@@ -36,7 +36,7 @@ const Cadastro: NextPage = (): any => {
     confirmaPassword: Yup.string()
       .required()
       .oneOf([Yup.ref('password')], 'Senhas devem ser as mesmas'),
-    telefone: Yup.string().required()
+    telefone: Yup.string().required().min(8)
   });
   const router = useRouter();
   const { control, handleSubmit, formState } = useForm<SignUp>({
