@@ -51,12 +51,16 @@ export default function carregarvalor_b() {
   const handleChangeCartao = (event: ChangeEvent<HTMLInputElement>): void => {
     setcartaoSelect(event.target.value as string);
   };
-  useEffect(() => {
+ /*  useEffect(() => {
+     if (loading) {
+      setLoading(false);
+    }
+  }, [loading]); */
+  const { data: cardsList, refetch } = useGetCards(user?.id, () => {
     if (loading) {
       setLoading(false);
     }
-  }, [loading]);
-  const { data: cardsList, refetch } = useGetCards(user?.user_id);
+  });
 
   return (
     <>

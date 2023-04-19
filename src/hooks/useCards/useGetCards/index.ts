@@ -9,14 +9,18 @@ export async function getCardsList(userId: number) {
   try {
     if (!userId) {
       return;
-    }    
+    }
     const { data } = await api.get(`/accounts/${userId}/cards`);
-    return data ;
-  } catch (err:any) {
+    return data;
+  } catch (err: any) {
     console.error(err);
-  }  
+  }
 }
 
-export function useGetCards(userId: any) {
-  return useQuery(QUERY_KEY_GET_CARDS, () => getCardsList(userId));
+export function useGetCards(userId: any, onSuccess: () => void) {
+  return useQuery({
+    queryKey: QUERY_KEY_GET_CARDS,
+    queryFn: () => getCardsList(userId),
+    onSuccess: onSuccess
+  });
 }

@@ -15,7 +15,7 @@ type Props = {};
 const Carregarvalor_d: NextPage = (props: Props) => {
   const { ammount, setAmmount, dated, setDated } = useCardStore();
   const { user } = useAuthState();
-  const { mutate: deposit } = useDeposit(String(user.user_id));
+  const { mutate: deposit } = useDeposit(String(user.id));
   const router = useRouter();
   const handleSubmit = () => {
     deposit(

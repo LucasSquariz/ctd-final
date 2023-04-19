@@ -58,7 +58,7 @@ const Perfil = () => {
     resolver: yupResolver(schema)
   });
 
-  const { mutate: updateUser } = useUpdateUser(String(user.user_id));
+  const { mutate: updateUser } = useUpdateUser(String(user.id));
   const [editName, setEditName] = useState(false);
   const [editPhone, setEditPhone] = useState(false);
   const [editPassword, setEditPassword] = useState(false);
