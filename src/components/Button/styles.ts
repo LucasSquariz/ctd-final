@@ -7,6 +7,7 @@ const variants = {
     background: ${({ theme }) => theme.colors.green};
     color: ${({ theme }) => theme.colors.black};
     border: 1px solid ${({ theme }) => theme.colors.color2};
+    max-width: 320px;
 
     &:hover {
       opacity: 0.7;

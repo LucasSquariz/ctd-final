@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const ContainerPage = styled.div`
   height: 100vh;
-  display: flex;
+  display: flex;     
   ${({ theme }) => css`
     background-color: ${theme.colors.background};
   `};
@@ -25,7 +25,7 @@ export const ContainerLogin = styled.form`
   flex-direction: column;
   row-gap: 20px;
   width: 100%;
-  max-width: 360px;
+  max-width: 320px;
   height: 332px;
   text-align: center;
 `;

@@ -30,7 +30,20 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = ['Entrar', 'Criar conta'];
+type ItensTypes = {
+  label: string;
+  link: string;
+}[];
+const navItems: ItensTypes = [
+  {
+    label: 'Entrar',
+    link: '/login'
+  },
+  {
+    label: 'Criar conta',
+    link: '/cadastro/cadastro'
+  }
+];
 
 export default function DrawerAppBar(props: Props) {
   const { window } = props;
@@ -47,10 +60,12 @@ export default function DrawerAppBar(props: Props) {
       <Divider />
       <List>
         {navItems.map(item => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-              <ListItemText primary={item} />
-            </ListItemButton>
+          <ListItem key={item.label} disablePadding>
+            <Link href={item.link}>
+              <ListItemButton sx={{ textAlign: 'center' }}>
+                <ListItemText primary={item.label} />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
       </List>
@@ -228,57 +243,6 @@ export default function DrawerAppBar(props: Props) {
                     width: '337px'
                   },
                   '@media(max-width: 330px)': {
-                    width: '300px',
-                    marginTop: '3em'
-                  }
-                }}
-              >
-                <Typography
-                  variant="h3"
-                  sx={{
-                    color: '#000',
-                    marginLeft: 3,
-                    fontSize: '2.2rem',
-                    fontWeight: 'bold',
-                    borderBottom: '1px #C1FD35 solid',
-                    width: '90%',
-                    padding: '22px 0px 5px 0px',                    
-                    '@media(max-width: 780px)': {
-                      fontSize: '1.5em'
-                    }
-                  }}
-                >
-                  Transferência
-                </Typography>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    color: '#000',
-                    marginLeft: 3,
-                    fontSize: '1.2rem',
-                    '@media(max-width: 780px)': {
-                      fontSize: '0.9em'
-                    },
-                    
-                  }}
-                >
-                  Com a Digital Money House você pode transferir dinheiro para
-                  outras contas, bem como receber transferências e centralizar
-                  seus investimentos na nossa carteira virtual.
-                </Typography>
-              </Box>
-              <Box
-                sx={{
-                  backgroundColor: '#fff',
-                  width: '30%',
-                  height: '200px',
-                  borderRadius: '30px',
-                  margin: '-14px 5px',
-                  padding: '5px',
-                  '@media(max-width: 780px)': {
-                    width: '337px'
-                  },
-                  '@media(max-width: 330px)': {
                     width: '300px',                    
                   }
                 }}
@@ -298,7 +262,7 @@ export default function DrawerAppBar(props: Props) {
                     }
                   }}
                 >
-                  Pagamento de serviços
+                  Transferência
                 </Typography>
                 <Typography
                   variant="h5"
@@ -309,6 +273,57 @@ export default function DrawerAppBar(props: Props) {
                     '@media(max-width: 780px)': {
                       fontSize: '0.9em'
                     }
+                  }}
+                >
+                  Com a Digital Money House você pode transferir dinheiro para
+                  outras contas, bem como receber transferências e centralizar
+                  seus investimentos na nossa carteira virtual.
+                </Typography>
+              </Box>
+              <Box
+                sx={{
+                  backgroundColor: '#fff',
+                  width: '30%',
+                  height: '200px',
+                  maxHeight: '250px',
+                  borderRadius: '30px',
+                  margin: '-14px 5px',
+                  padding: '5px',
+                  '@media(max-width: 780px)': {
+                    width: '337px'
+                  },
+                  '@media(max-width: 330px)': {
+                    width: '300px',
+                    marginBottom: '5em'
+                  }
+                }}
+              >
+                <Typography
+                  variant="h3"
+                  sx={{
+                    color: '#000',
+                    marginLeft: 3,
+                    fontSize: '2.2rem',
+                    fontWeight: 'bold',
+                    borderBottom: '1px #C1FD35 solid',
+                    width: '90%',
+                    padding: '22px 0px 5px 0px',
+                    '@media(max-width: 780px)': {
+                      fontSize: '1.5em'
+                    }                    
+                  }}
+                >
+                  Pagamento de serviços
+                </Typography>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: '#000',
+                    marginLeft: 3,
+                    fontSize: '1.2rem',
+                    '@media(max-width: 780px)': {
+                      fontSize: '0.9em'
+                    },                    
                   }}
                 >
                   Pague mensalmente por serviços com apenas 3 clicks. Fácil,
@@ -323,7 +338,7 @@ export default function DrawerAppBar(props: Props) {
                 display: 'flex',
                 backgroundColor: ' #C1FD35',
                 justifyContent: 'center',
-                borderRadius: '30px 30px 0px 0px',                
+                borderRadius: '30px 30px 0px 0px'
               }}
             ></Box>
           </Box>
