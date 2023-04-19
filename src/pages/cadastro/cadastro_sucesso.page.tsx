@@ -34,9 +34,9 @@ const CadastroSucesso: NextPage = () => {
             Enviamos uma mensagem de confirmação para seu e-mail, por favor
             acesse e siga as instruções para iniciar a sessão.
           </p>
-          <Button style={{ marginTop: '20px' }}>
-            <Link href={`/`}>Continuar</Link>
-          </Button>
+          <Link href={`/`}>
+            <Button style={{ marginTop: '20px' }}>Continuar</Button>
+          </Link>
         </div>
       </div>
     </>

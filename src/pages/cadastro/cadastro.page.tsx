@@ -12,8 +12,8 @@ import { useRouter } from 'next/router';
 
 const Cadastro: NextPage = (): any => {
   const schema = Yup.object().shape({
-    nome: Yup.string().required(),
-    sobrenome: Yup.string().required(),
+    firstname: Yup.string().required(),
+    lastname: Yup.string().required(),
     dni: Yup.number().required(),
     email: Yup.string().required(),
     password: Yup.string()
