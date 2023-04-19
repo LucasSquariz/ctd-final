@@ -20,7 +20,7 @@ const Cartao = () => {
 
   const { mutate } = useDeleteCard();
 
-  const { data: cardsList, refetch } = useGetCards(user?.user_id);
+  const { data: cardsList, refetch } = useGetCards(user?.id);
 
   const onClick = (e: any) => {
     e.preventDefault();
@@ -81,7 +81,7 @@ const Cartao = () => {
                     </s.ActivityCardsDescriptionAndImg>
                     <s.ActivityCardsCashAndDate>
                       <s.ActivityCardsCash
-                        onClick={() => handleDeleteCard(user?.user_id, card.id)}
+                        onClick={() => handleDeleteCard(user?.id, card.id)}
                       >
                         Eliminar
                       </s.ActivityCardsCash>

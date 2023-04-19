@@ -8,8 +8,7 @@ import useGetAccountActivityById from 'hooks/useAccountActivityById';
 import { useAuthState } from 'contexts/auth/AuthContext';
 
 const Atividade = () => {  
-  const { user } = useAuthState();  
-console.log(user)
+  const { user } = useAuthState();
   /* @ts-ignore */
   const activity = useGetAccountActivityById(user.id);
   const activityData = activity?.data;

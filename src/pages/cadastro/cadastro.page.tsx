@@ -93,14 +93,14 @@ const Cadastro: NextPage = (): any => {
         <h1>Criar Conta</h1>
         <Input
           type="text"
-          name="nome"
+          name="firstname"
           id="firstname"
           placeholder="Nome"
           control={control}
         />
         <Input
           type="text"
-          name="sobrenome"
+          name="lastname"
           id="lastname"
           placeholder="Sobrenome"
           control={control}

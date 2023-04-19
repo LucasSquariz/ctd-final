@@ -18,7 +18,7 @@ const DetalheAtividade = () => {
 
   /* @ts-ignore */
   const activity = useGetActivityDetailsById(accountId, transactionId);
-  console.log(activity);
+  
 
   const monthSelect = (month: string) => {
     switch (month) {

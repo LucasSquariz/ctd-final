@@ -52,8 +52,7 @@ export function AuthProvider({ children }: PropsWithChildren<unknown>) {
       signInMutate(
         { email, password },
         {
-          onSuccess: data => {
-            console.log(data);
+          onSuccess: data => {            
             const { token } = data;
             success('Logado com sucesso!');
             setCookie(undefined, STORAGE.TOKEN_KEY, token, {

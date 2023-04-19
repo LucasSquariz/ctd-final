@@ -79,9 +79,7 @@ const Perfil = () => {
         }
       }
     );
-  };
-
-  console.log(data);
+  }; 
 
   return (
     <LayoutAuth>

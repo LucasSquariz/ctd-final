@@ -8,8 +8,7 @@ export async function signIn({ email, password }: AuthUserInput) {
     const { data } = await api.post('/login', {
       email,
       password
-    });
-    console.log(data);
+    });    
     return data;
   } catch (err:any) {
     console.log(err);
