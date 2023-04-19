@@ -11,7 +11,7 @@ const Atividade = () => {
   const { user } = useAuthState();  
 console.log(user)
   /* @ts-ignore */
-  const activity = useGetAccountActivityById(user.user_id);
+  const activity = useGetAccountActivityById(user.id);
   const activityData = activity?.data;
 
   return (

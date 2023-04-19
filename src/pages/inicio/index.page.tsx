@@ -10,17 +10,18 @@ import { useAuthState } from 'contexts/auth/AuthContext';
 import { useState } from 'react';
 
 const Inicio = () => {
-  const [activityData, setActivityData] = useState({});
+  const [activityData, setActivityData] = useState(null);  
   const [userData, setUserData] = useState({});
   const { user } = useAuthState();
 
   /* @ts-ignore */
   const activity = useGetAccountActivityById(user.id, activityData => {
+    /* @ts-ignore */
     setActivityData(activityData);
   });
 
   const userDataFetch = useGetAccount(userData => {
-    setUserData(userData);
+    setUserData(userData);    
   });
 
   return (
@@ -52,7 +53,7 @@ const Inicio = () => {
               </s.Button>
               <s.Button>Pagar serviços</s.Button>
             </s.ButtonsContainer>
-            {Object.keys(activityData).length == 0 ? (
+            {activityData === null ? (
               <></>
             ) : (
               <ActivityCards activityData={activityData} />

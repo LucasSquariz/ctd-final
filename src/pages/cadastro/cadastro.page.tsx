@@ -124,14 +124,14 @@ const Cadastro: NextPage = (): any => {
           Use entre 6 e 20 caracteres (deve conter pelo menos 1 caractere
           especial, uma letra maiúscula e um número)
         </p>
-        <Input
+        <Input          
           type="password"
           name="password"
           id="password"
           placeholder="Senha"
           control={control}
         />
-        <Input
+        <Input          
           type="password"
           name="confirmaPassword"
           id="confirmaPassword"
